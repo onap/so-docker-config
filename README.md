@@ -8,5 +8,5 @@ This repository provides files to:
 
 License and Authors
 -------------------
-Authors: pete/eddie/kevin
+Authors: pete/eddie/kevin/Chris/test/2
 License: Apache License, version 2.0
