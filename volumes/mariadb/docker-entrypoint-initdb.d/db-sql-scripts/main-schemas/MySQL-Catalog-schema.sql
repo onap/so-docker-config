@@ -7,9 +7,15 @@
         drop 
         foreign key FK_8sxvm215cw3tjfh3wni2y3myx;
 
+    alter table MODEL_RECIPE 
+        drop 
+        foreign key FK_c23r0puyqug6n44jg39dutm1c;
+
     alter table SERVICE_RECIPE 
         drop 
         foreign key FK_kv13yx013qtqkn94d5gkwbu3s;
+
+    drop table if exists ALLOTTED_RESOURCE_CUSTOMIZATION;
 
     drop table if exists HEAT_ENVIRONMENT;
 
@@ -21,13 +27,23 @@
 
     drop table if exists HEAT_TEMPLATE_PARAMS;
 
+    drop table if exists MODEL;
+
+    drop table if exists MODEL_RECIPE;
+
     drop table if exists NETWORK_RECIPE;
 
     drop table if exists NETWORK_RESOURCE;
 
+    drop table if exists NETWORK_RESOURCE_CUSTOMIZATION;
+
     drop table if exists SERVICE;
 
     drop table if exists SERVICE_RECIPE;
+
+    drop table if exists SERVICE_TO_ALLOTTED_RESOURCES;
+
+    drop table if exists SERVICE_TO_NETWORKS;
 
     drop table if exists VF_MODULE;
 
@@ -41,6 +57,18 @@
 
     drop table if exists VNF_RESOURCE;
 
+    create table ALLOTTED_RESOURCE_CUSTOMIZATION (
+        MODEL_CUSTOMIZATION_UUID varchar(255) not null,
+        MODEL_VERSION varchar(255),
+        MODEL_UUID varchar(255),
+        MODEL_NAME varchar(255),
+        MODEL_INSTANCE_NAME varchar(255),
+        CREATION_TIMESTAMP datetime not null,
+        DESCRIPTION varchar(255),
+        MODEL_INVARIANT_UUID varchar(255),
+        primary key (MODEL_CUSTOMIZATION_UUID)
+    );
+
     create table HEAT_ENVIRONMENT (
         id integer not null auto_increment,
         NAME varchar(100) not null,
@@ -50,6 +78,7 @@
         ENVIRONMENT longtext not null,
         CREATION_TIMESTAMP datetime not null,
         ASDC_UUID varchar(200) default 'MANUAL RECORD',
+        ARTIFACT_CHECKSUM varchar(200) default 'MANUAL RECORD',
         ASDC_LABEL varchar(200),
         primary key (id)
     );
@@ -65,6 +94,7 @@
         CREATION_TIMESTAMP datetime not null,
         ASDC_UUID varchar(200),
         ASDC_LABEL varchar(200),
+        ARTIFACT_CHECKSUM varchar(200) default 'MANUAL RECORD',
         primary key (id)
     );
 
@@ -87,6 +117,7 @@
         DESCRIPTION varchar(1200),
         ASDC_LABEL varchar(200),
         CREATION_TIMESTAMP datetime not null,
+        ARTIFACT_CHECKSUM varchar(200) default 'MANUAL RECORD',
         CHILD_TEMPLATE_ID integer,
         primary key (id)
     );
@@ -98,6 +129,32 @@
         IS_REQUIRED bit not null,
         PARAM_TYPE varchar(20),
         PARAM_ALIAS varchar(45),
+        primary key (id)
+    );
+
+    create table MODEL (
+        id integer not null auto_increment,
+        MODEL_TYPE varchar(20) not null,
+        MODEL_VERSION_ID varchar(40) not null,
+        MODEL_INVARIANT_ID varchar(40),
+        MODEL_NAME varchar(40) not null,
+        MODEL_VERSION varchar(20),
+        MODEL_CUSTOMIZATION_ID varchar(40),
+        MODEL_CUSTOMIZATION_NAME varchar(40),
+        CREATION_TIMESTAMP datetime not null,
+        primary key (id)
+    );
+
+    create table MODEL_RECIPE (
+        id integer not null auto_increment,
+        MODEL_ID integer not null,
+        ACTION varchar(20) not null,
+        SCHEMA_VERSION varchar(20),
+        DESCRIPTION varchar(1200),
+        ORCHESTRATION_URI varchar(256) not null,
+        MODEL_PARAM_XSD varchar(2048),
+        RECIPE_TIMEOUT integer,
+        CREATION_TIMESTAMP datetime not null,
         primary key (id)
     );
 
@@ -129,6 +186,18 @@
         primary key (id)
     );
 
+    create table NETWORK_RESOURCE_CUSTOMIZATION (
+        MODEL_CUSTOMIZATION_UUID varchar(255) not null,
+        MODEL_UUID varchar(255),
+        MODEL_NAME varchar(255),
+        MODEL_INSTANCE_NAME varchar(255),
+        MODEL_VERSION varchar(255),
+        MODEL_INVARIANT_UUID varchar(255),
+        NETWORK_RESOURCE_ID integer,
+        CREATION_TIMESTAMP datetime not null,
+        primary key (MODEL_CUSTOMIZATION_UUID)
+    );
+
     create table SERVICE (
         id integer not null auto_increment,
         SERVICE_NAME varchar(40),
@@ -156,6 +225,20 @@
         primary key (id)
     );
 
+    create table SERVICE_TO_ALLOTTED_RESOURCES (
+        SERVICE_MODEL_UUID varchar(200) not null,
+        AR_MODEL_CUSTOMIZATION_UUID varchar(200) not null,
+        CREATION_TIMESTAMP datetime not null,
+        primary key (SERVICE_MODEL_UUID, AR_MODEL_CUSTOMIZATION_UUID)
+    );
+
+    create table SERVICE_TO_NETWORKS (
+        SERVICE_MODEL_UUID varchar(200) not null,
+        NETWORK_MODEL_CUSTOMIZATION_UUID varchar(200) not null,
+        CREATION_TIMESTAMP datetime not null,
+        primary key (SERVICE_MODEL_UUID, NETWORK_MODEL_CUSTOMIZATION_UUID)
+    );
+
     create table VF_MODULE (
         id integer not null auto_increment,
         TYPE varchar(200) not null,
@@ -172,6 +255,11 @@
         VNF_RESOURCE_ID integer not null,
         ENVIRONMENT_ID integer,
         MODEL_INVARIANT_UUID varchar(255),
+        MODEL_CUSTOMIZATION_UUID varchar(200),
+        MIN_INSTANCES integer,
+        MAX_INSTANCES integer,
+        INITIAL_COUNT integer,
+        LABEL varchar(200),
         primary key (id)
     );
 
@@ -238,6 +326,7 @@
         MODEL_CUSTOMIZATION_NAME varchar(200),
         MODEL_NAME varchar(200),
         SERVICE_MODEL_INVARIANT_UUID varchar(200),
+        MODEL_CUSTOMIZATION_UUID varchar(255),
         primary key (id)
     );
 
@@ -252,6 +341,12 @@
 
     alter table HEAT_TEMPLATE_PARAMS 
         add constraint UK_pj3cwbmewecf0joqv2mvmbvw3  unique (HEAT_TEMPLATE_ID, PARAM_NAME);
+
+    alter table MODEL 
+        add constraint UK_rra00f1rk6eyy7g00k9raxh2v  unique (MODEL_TYPE, MODEL_VERSION_ID);
+
+    alter table MODEL_RECIPE 
+        add constraint UK_b4g8j9wtqrkxfycyi3ursk7gb  unique (MODEL_ID, ACTION);
 
     alter table NETWORK_RECIPE 
         add constraint UK_rl4f296i0p8lyokxveaiwkayi  unique (NETWORK_TYPE, ACTION, VERSION_STR);
@@ -283,6 +378,11 @@
         add constraint FK_8sxvm215cw3tjfh3wni2y3myx 
         foreign key (HEAT_TEMPLATE_ID) 
         references HEAT_TEMPLATE (id);
+
+    alter table MODEL_RECIPE 
+        add constraint FK_c23r0puyqug6n44jg39dutm1c 
+        foreign key (MODEL_ID) 
+        references MODEL (id);
 
     alter table SERVICE_RECIPE 
         add constraint FK_kv13yx013qtqkn94d5gkwbu3s 
