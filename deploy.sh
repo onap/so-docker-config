@@ -110,7 +110,7 @@ function pull_docker_images() {
 function wait_for_mariadb() {
     CONTAINER_NAME=$1
    
-    TIMEOUT=120
+    TIMEOUT=600
     
     # wait for the real startup
     AMOUNT_STARTUP=$($DOCKER_CMD logs ${CONTAINER_NAME} 2>&1 | grep 'mysqld: ready for connections.' | wc -l)
@@ -123,8 +123,8 @@ function wait_for_mariadb() {
         echo "ERROR: Mariadb deployment failed."
         exit 1
     fi
-    let TIMEOUT-=1
-    sleep 1       
+    let TIMEOUT-=5
+    sleep 5
     done
 }
 
