@@ -2,7 +2,7 @@ USE camundabpmn;
 
 INSERT INTO `act_id_group` (`ID_`, `REV_`, `NAME_`, `TYPE_`) VALUES ('camunda-admin',1,'camunda BPM Administrators','SYSTEM');
 
-INSERT INTO `act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `SALT_`, `PICTURE_ID_`) VALUES ('admin',1,'admin','user','camundaadmin@onap.org','{SHA-512}p9Y4lC0X70X5ihfqGTNz/NDuWRbAgtnlEfjbYLMHLp0tMl//B7ujc80MLcHWlJ+jIG14uWTI6AqQYp6PykCxZg==','2vEsAj7cap7XEidkrd4BVg==',NULL);
+INSERT INTO `act_id_user` (`ID_`, `REV_`, `FIRST_`, `LAST_`, `EMAIL_`, `PWD_`, `SALT_`, `PICTURE_ID_`) VALUES ('admin',1,'admin','user','camundaadmin@onap.org','{SHA-512}tcIcLvH6sGyO3KdZIXWZeBoWIN25rD8By1J/9es6t7Rgi87aIHdPdvqlsV12KhXrOqySKqaP9NV28sOMI9IxbA==','dHLBrb7C5lJssAdY6hJB5Q==',NULL);
 
 INSERT INTO `act_id_membership` (`USER_ID_`, `GROUP_ID_`) VALUES ('admin','camunda-admin');
 
