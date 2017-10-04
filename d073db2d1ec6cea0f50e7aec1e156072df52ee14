@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_99b8362b",
+        "filename": "volumes/mariadb/docker-entrypoint-initdb.d/db-sql-scripts/main-schemas/MySQL-Catalog-schema.sql",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1521
+      },
+      "writtenOn": "2017-10-04T20:59:29Z",
+      "side": 1,
+      "message": "Clearly this will cause a duplicate key failure.",
+      "revId": "d073db2d1ec6cea0f50e7aec1e156072df52ee14",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
