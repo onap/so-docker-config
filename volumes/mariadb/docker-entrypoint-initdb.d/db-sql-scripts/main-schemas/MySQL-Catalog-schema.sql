@@ -29,7 +29,7 @@
 
     alter table VNF_RES_CUSTOM_TO_VF_MODULE_CUSTOM 
         drop 
-        foreign key FK_6tdyg2ib5eguh4k2qgofh4fj7;
+        foreign key FK_4p0consmgggrkf4qj1onx8g5j;
 
     drop table if exists ALLOTTED_RESOURCE;
 
@@ -409,7 +409,6 @@
         VNF_RESOURCE_CUST_MODEL_CUSTOMIZATION_UUID varchar(200) not null,
         VF_MODULE_CUST_MODEL_CUSTOMIZATION_UUID varchar(200) not null,
         CREATION_TIMESTAMP datetime not null,
-        VNF_RESOURCE_MODEL_UUID varchar(200) not null,
         primary key (VNF_RESOURCE_CUST_MODEL_CUSTOMIZATION_UUID, VF_MODULE_CUST_MODEL_CUSTOMIZATION_UUID)
     );
 
@@ -467,6 +466,6 @@
         references VNF_RESOURCE (MODEL_UUID);
 
     alter table VNF_RES_CUSTOM_TO_VF_MODULE_CUSTOM 
-        add constraint FK_6tdyg2ib5eguh4k2qgofh4fj7 
-        foreign key (VNF_RESOURCE_MODEL_UUID) 
+        add constraint FK_4p0consmgggrkf4qj1onx8g5j 
+        foreign key (VF_MODULE_CUST_MODEL_CUSTOMIZATION_UUID) 
         references VNF_RESOURCE_CUSTOMIZATION (MODEL_CUSTOMIZATION_UUID);
