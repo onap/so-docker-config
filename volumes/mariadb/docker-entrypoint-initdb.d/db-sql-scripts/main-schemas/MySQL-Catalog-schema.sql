@@ -27,10 +27,6 @@
         drop 
         foreign key FK_iff1ayhb1hrp5jhea3vvikuni;
 
-    alter table VNF_RES_CUSTOM_TO_VF_MODULE_CUSTOM 
-        drop 
-        foreign key FK_4p0consmgggrkf4qj1onx8g5j;
-
     drop table if exists ALLOTTED_RESOURCE;
 
     drop table if exists ALLOTTED_RESOURCE_CUSTOMIZATION;
@@ -464,8 +460,3 @@
         add constraint FK_iff1ayhb1hrp5jhea3vvikuni 
         foreign key (VNF_RESOURCE_MODEL_UUID) 
         references VNF_RESOURCE (MODEL_UUID);
-
-    alter table VNF_RES_CUSTOM_TO_VF_MODULE_CUSTOM 
-        add constraint FK_4p0consmgggrkf4qj1onx8g5j 
-        foreign key (VF_MODULE_CUST_MODEL_CUSTOMIZATION_UUID) 
-        references VNF_RESOURCE_CUSTOMIZATION (MODEL_CUSTOMIZATION_UUID);
