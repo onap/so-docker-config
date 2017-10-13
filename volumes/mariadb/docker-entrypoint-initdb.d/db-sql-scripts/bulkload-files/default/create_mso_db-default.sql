@@ -16,7 +16,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `mso_requests` /*!40100 DEFAULT CHARACT
 USE `mso_requests`;
 
 SOURCE ../../main-schemas/MySQL-Requests-schema.sql
-SOURCE ../../sub-sql-files/site_status_updated_timestamp.sql
 
 --
 -- Current Database: `mso_catalog`
@@ -29,7 +28,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `mso_catalog` /*!40100 DEFAULT CHARACTE
 USE `mso_catalog`;
 
 SOURCE ../../main-schemas/MySQL-Catalog-schema.sql
-SOURCE ../../sub-sql-files/catalog_timestamp_mso_db.sql
 
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 
