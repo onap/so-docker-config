@@ -114,7 +114,7 @@ function wait_for_mariadb() {
     
     # wait for the real startup
     AMOUNT_STARTUP=$($DOCKER_CMD logs ${CONTAINER_NAME} 2>&1 | grep 'mysqld: ready for connections.' | wc -l)
-    while [[ ${AMOUNT_STARTUP} -lt 2 ]];
+    while [[ ${AMOUNT_STARTUP} -lt 1 ]];
     do
     echo "Waiting for '$CONTAINER_NAME' deployment to finish ..."
     AMOUNT_STARTUP=$($DOCKER_CMD logs ${CONTAINER_NAME} 2>&1 | grep 'mysqld: ready for connections.' | wc -l)
