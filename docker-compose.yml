@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2'
 networks:
   default:
     driver: bridge
@@ -21,10 +21,6 @@ services:
       options:
         max-size: "30m"
         max-file: "5"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
   mso:
     image: openecomp/mso
     ports:
@@ -39,8 +35,7 @@ services:
     hostname:
       mso.mso.testlab.openecomp.org
     depends_on:
-      mariadb:
-        condition: service_healthy
+      - mariadb
     logging:
       driver: "json-file"
       options:
