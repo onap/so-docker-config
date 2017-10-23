@@ -32,6 +32,7 @@ services:
       - ./volumes/mso/chef-config:/shared
     environment:
       - MYSQL_ROOT_PASSWORD=password
+      - ONAP_IP=${OPENO_IP}
     hostname:
       mso.mso.testlab.openecomp.org
     depends_on:
