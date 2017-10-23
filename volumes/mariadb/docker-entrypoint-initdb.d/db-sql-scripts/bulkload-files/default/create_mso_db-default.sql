@@ -88,6 +88,15 @@ INSERT INTO `service_recipe` (`id`, `ACTION`, `VERSION_STR`, `DESCRIPTION`, `ORC
 INSERT INTO `service_recipe` (`id`, `ACTION`, `VERSION_STR`, `DESCRIPTION`, `ORCHESTRATION_URI`, `SERVICE_PARAM_XSD`, `RECIPE_TIMEOUT`, `SERVICE_TIMEOUT_INTERIM`, `CREATION_TIMESTAMP`, `SERVICE_MODEL_UUID`) VALUES (3,'createInstance','1','DEFAULT recipe to create service-instance if no custom BPMN flow is found','/mso/async/services/CreateGenericALaCarteServiceInstance',NULL,180,NULL,'2017-10-05 18:52:03','48cc3acd-a9fe-11e7-8b4b-0242ac120002');
 INSERT INTO `service_recipe` (`id`, `ACTION`, `VERSION_STR`, `DESCRIPTION`, `ORCHESTRATION_URI`, `SERVICE_PARAM_XSD`, `RECIPE_TIMEOUT`, `SERVICE_TIMEOUT_INTERIM`, `CREATION_TIMESTAMP`, `SERVICE_MODEL_UUID`) VALUES (4,'deleteInstance','1','DEFAULT recipe to delete service-instance if no custom BPMN flow is found','/mso/async/services/DeleteGenericALaCarteServiceInstance',NULL,180,NULL,'2017-10-05 18:52:03','48cc3acd-a9fe-11e7-8b4b-0242ac120002');
 
+--
+-- Custom Reciepe for the VoLTE service added temporarily
+--
+
+INSERT INTO `service` (`MODEL_UUID`, `MODEL_NAME`, `MODEL_INVARIANT_UUID`, `MODEL_VERSION`, `DESCRIPTION`, `CREATION_TIMESTAMP`, `TOSCA_CSAR_ARTIFACT_UUID`) VALUES ('dfcd7471-16c7-444e-8268-d4c50d90593a','UUI_DEFAULT','dfcd7471-16c7-444e-8268-d4c50d90593a','1.0','Default service for UUI to use for infra APIH orchestration1707MIGRATED1707MIGRATED','2017-10-23 18:52:03',NULL);
+
+INSERT INTO `service_recipe` (`id`, `ACTION`, `VERSION_STR`, `DESCRIPTION`, `ORCHESTRATION_URI`, `SERVICE_PARAM_XSD`, `RECIPE_TIMEOUT`, `SERVICE_TIMEOUT_INTERIM`, `CREATION_TIMESTAMP`, `SERVICE_MODEL_UUID`) VALUES (11,'createInstance','1','Custom recipe to create E2E service-instance if no custom BPMN flow is found','/mso/async/services/CreateCustomE2EServiceInstance',NULL,180,NULL,'2017-10-05 18:52:03','dfcd7471-16c7-444e-8268-d4c50d90593a');
+INSERT INTO `service_recipe` (`id`, `ACTION`, `VERSION_STR`, `DESCRIPTION`, `ORCHESTRATION_URI`, `SERVICE_PARAM_XSD`, `RECIPE_TIMEOUT`, `SERVICE_TIMEOUT_INTERIM`, `CREATION_TIMESTAMP`, `SERVICE_MODEL_UUID`) VALUES (12,'deleteInstance','1','Custom recipe to delete E2E service-instance if no custom BPMN flow is found','/mso/async/services/DeleteCustomE2EServiceInstance',NULL,180,NULL,'2017-10-05 18:52:03','dfcd7471-16c7-444e-8268-d4c50d90593a');
+
 INSERT INTO `temp_network_heat_template_lookup` (`NETWORK_RESOURCE_MODEL_NAME`, `HEAT_TEMPLATE_ARTIFACT_UUID`, `AIC_VERSION_MIN`, `AIC_VERSION_MAX`) VALUES ('CONTRAIL30_GNDIRECT','4885c7a1-a9fe-11e7-8b4b-0242ac120002','3.0',NULL);
 INSERT INTO `temp_network_heat_template_lookup` (`NETWORK_RESOURCE_MODEL_NAME`, `HEAT_TEMPLATE_ARTIFACT_UUID`, `AIC_VERSION_MIN`, `AIC_VERSION_MAX`) VALUES ('CONTRAIL30_L2NODHCP','4885c198-a9fe-11e7-8b4b-0242ac120002','3.0',NULL);
 
