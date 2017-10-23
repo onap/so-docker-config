@@ -37,8 +37,17 @@ services:
       mso.mso.testlab.openecomp.org
     depends_on:
       - mariadb
+    links:
+      - mariadb
     logging:
       driver: "json-file"
       options:
         max-size: "30m"
         max-file: "5"
+    command:
+      - /wait-for.sh
+      - -t
+      - "300"
+      - mariadb:3306
+      - --
+      - /opt/mso/scripts/start-jboss-server.sh
