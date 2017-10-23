@@ -127,7 +127,7 @@
         DESCRIPTION varchar(255),
         NAME varchar(255),
         VERSION varchar(255),
-        BODY varchar(255),
+        BODY longtext,
         CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
         ARTIFACT_CHECKSUM varchar(255),
         primary key (ARTIFACT_UUID)
