@@ -204,7 +204,7 @@
     create table NETWORK_RESOURCE (
         MODEL_UUID varchar(200) not null,
         MODEL_NAME varchar(200) not null,
-        MODEL_INVARIANT_UUID varchar(20),
+        MODEL_INVARIANT_UUID varchar(200),
         MODEL_VERSION varchar(20),
         TOSCA_NODE_TYPE varchar(200),
         NEUTRON_NETWORK_TYPE varchar(20),
