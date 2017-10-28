@@ -6,7 +6,11 @@
   "default_attributes":
   {
     "mso_config_path": "/etc/mso/config.d/",
-
+    "mso-topology-config":
+    {
+      "msb-server-ip": "172.30.3.34",
+      "msb-server-port": "80"
+    },
     "mso-api-handler-infra-config":
     {
       "bpelURL": "http://mso:8080",
