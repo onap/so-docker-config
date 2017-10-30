@@ -3,14 +3,17 @@
   "description": "MSO Docker Images",
   "chef_type": "environment",
   "json_class": "Chef::Environment",
+
   "default_attributes":
   {
     "mso_config_path": "/etc/mso/config.d/",
+
     "mso-topology-config":
     {
       "msb-server-ip": "172.30.3.34",
       "msb-server-port": "80"
     },
+
     "mso-api-handler-infra-config":
     {
       "bpelURL": "http://mso:8080",
@@ -143,7 +146,6 @@
       "ueb_consumer_id": "testuser",
       "ueb_topic": "queuetopic",
       "ueb_polling_interval": "30",
-      "ueb_polling_interval": "30",
       "ueb_user": "user",
       "ueb_password": "1ec0d74615d4e4639f991c0590c83b88",
       "bpel_url": "http://localhost:18080",
@@ -179,6 +181,7 @@
       "adaptersSdncRestEndpoint": "http://mso:8080/adapters/rest/v1/sdnc",
       "adaptersTenantEndpoint": "http://mso:8080/tenants/TenantAdapter",
       "adaptersDbAuth": "6B0E6863FB8EE010AB6F191B3C0489437601E81DC7C86305CB92DB98AFC53D74",
+      "adaptersWorkflowMessageEndpoint": "http://mso:8080/workflows/messages",
       "workflowMessageEndpoint": "http://mso:8080/mso/WorkflowMessage",
       "workflowSdncAdapterCallback": "http://mso:8080/mso/SDNCAdapterCallbackService",
       "msoKey": "07a7159d3bf51a0e53be7a8f89699be7",
@@ -198,8 +201,8 @@
       "sdncTimeoutFirewall": "20",
       "callbackRetryAttempts": "30",
       "callbackRetrySleepTime": "1000",
-      "workflowL3ToHigherLayerAddBondingModelName" : "WAN Bonding",
-      "workflowL3ToHigherLayerAddBondingModelVersion" : "2.0"
+      "workflowL3ToHigherLayerAddBondingModelName": "WAN Bonding",
+      "workflowL3ToHigherLayerAddBondingModelVersion": "2.0"
     }
   },
 
