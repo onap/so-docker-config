@@ -46,6 +46,7 @@ services:
         max-file: "5"
     command:
       - /wait-for.sh
+      - -q
       - -t
       - "300"
       - mariadb:3306
