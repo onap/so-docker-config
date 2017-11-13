@@ -116,6 +116,17 @@ INSERT INTO `vnf_components_recipe` (`id`, `VNF_TYPE`, `VNF_COMPONENT_TYPE`, `VF
 INSERT INTO `vnf_components_recipe` (`id`, `VNF_TYPE`, `VNF_COMPONENT_TYPE`, `VF_MODULE_MODEL_UUID`, `ACTION`, `SERVICE_TYPE`, `VERSION`, `DESCRIPTION`, `ORCHESTRATION_URI`, `VNF_COMPONENT_PARAM_XSD`, `RECIPE_TIMEOUT`, `CREATION_TIMESTAMP`) VALUES (11,NULL,'vfModule','VID_DEFAULT','deleteInstance',NULL,'1','VID_DEFAULT recipe t','/mso/async/services/DeleteVfModuleInfra',null,180,'2017-10-05 18:52:03');
 INSERT INTO `vnf_components_recipe` (`id`, `VNF_TYPE`, `VNF_COMPONENT_TYPE`, `VF_MODULE_MODEL_UUID`, `ACTION`, `SERVICE_TYPE`, `VERSION`, `DESCRIPTION`, `ORCHESTRATION_URI`, `VNF_COMPONENT_PARAM_XSD`, `RECIPE_TIMEOUT`, `CREATION_TIMESTAMP`) VALUES (12,NULL,'vfModule','VID_DEFAULT','updateInstance',NULL,'1','VID_DEFAULT recipe t','/mso/async/services/UpdateVfModuleInfra',null,180,'2017-10-05 18:52:03');
 
+--
+-- Default Reciepe for the VNF componnets added start #SO-334, to unblock the VNF operations
+--
+
+INSERT INTO `vnf_components_recipe` (`VNF_TYPE`, `VF_MODULE_MODEL_UUID`, `ACTION`, `VERSION`, `DESCRIPTION`, `ORCHESTRATION_URI`,`VNF_COMPONENT_TYPE`, `VNF_COMPONENT_PARAM_XSD`, `RECIPE_TIMEOUT`, `SERVICE_TYPE`) VALUES  (NULL,'POLICY_DEFAULT','createInstance','1','Recipe Match POLICY_DEFAULT for VF Modules if no custom flow exists','/mso/async/services/CreateVfModuleInfra','vfModule',NULL,180,NULL);
+INSERT INTO `vnf_components_recipe` (`VNF_TYPE`, `VF_MODULE_MODEL_UUID`, `ACTION`, `VERSION`, `DESCRIPTION`, `ORCHESTRATION_URI`,`VNF_COMPONENT_TYPE`, `VNF_COMPONENT_PARAM_XSD`, `RECIPE_TIMEOUT`, `SERVICE_TYPE`) VALUES (NULL,'POLICY_DEFAULT','updateInstance','1','Recipe Match POLICY_DEFAULT for VF Modules if no custom flow exists','/mso/async/services/UpdateVfModuleInfra','vfModule',NULL,180,NULL);
+INSERT INTO `vnf_components_recipe` (`VNF_TYPE`, `VF_MODULE_MODEL_UUID`, `ACTION`, `VERSION`, `DESCRIPTION`, `ORCHESTRATION_URI`,`VNF_COMPONENT_TYPE`, `VNF_COMPONENT_PARAM_XSD`, `RECIPE_TIMEOUT`, `SERVICE_TYPE`) VALUES (NULL,'POLICY_DEFAULT','deleteInstance','1','Recipe Match POLICY_DEFAULT for VF Modules if no custom flow exists','/mso/async/services/DeleteVfModuleInfra','vfModule',NULL,180,NULL);
+--
+-- Default Reciepe for the VNF componnets added End
+--
+
 INSERT INTO `vnf_recipe` (`id`, `VF_MODULE_ID`, `ACTION`, `SERVICE_TYPE`, `VERSION_STR`, `VNF_TYPE`, `DESCRIPTION`, `ORCHESTRATION_URI`, `VNF_PARAM_XSD`, `RECIPE_TIMEOUT`, `CREATION_TIMESTAMP`) VALUES (1,NULL,'CREATE',NULL,'1','*','Recipe Match All for VNFs if no custom flow exists','/mso/workflow/services/CreateGenericVNFV1',NULL,180,'2017-10-05 18:52:03');
 INSERT INTO `vnf_recipe` (`id`, `VF_MODULE_ID`, `ACTION`, `SERVICE_TYPE`, `VERSION_STR`, `VNF_TYPE`, `DESCRIPTION`, `ORCHESTRATION_URI`, `VNF_PARAM_XSD`, `RECIPE_TIMEOUT`, `CREATION_TIMESTAMP`) VALUES (2,NULL,'DELETE',NULL,'1','*','Recipe Match All for VNFs if no custom flow exists','/mso/async/services//deleteGenericVNFV1',NULL,180,'2017-10-05 18:52:03');
 INSERT INTO `vnf_recipe` (`id`, `VF_MODULE_ID`, `ACTION`, `SERVICE_TYPE`, `VERSION_STR`, `VNF_TYPE`, `DESCRIPTION`, `ORCHESTRATION_URI`, `VNF_PARAM_XSD`, `RECIPE_TIMEOUT`, `CREATION_TIMESTAMP`) VALUES (3,NULL,'UPDATE',NULL,'1','*','Recipe Match All for VNFs if no custom flow exists','/mso/workflow/services/updateGenericVNFV1',NULL,180,'2017-10-05 18:52:03');
