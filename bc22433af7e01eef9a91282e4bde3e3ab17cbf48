@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_10613639",
+        "filename": "volumes/mariadb/docker-entrypoint-initdb.d/db-sql-scripts/main-schemas/MySQL-Catalog-schema.sql",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1423
+      },
+      "writtenOn": "2017-12-20T14:52:05Z",
+      "side": 1,
+      "message": "This change should be made in the hibernate definitions (hbm.xml files) in so/mso-catalog-db/src/main/resources.  Basically, you should change the hbm.xml file(s), then do an \"so\" build, which should regenerate MySQL-Catalog-schema.sql (under \"so\").  Then, copy the generated schema to docker-config/volumes/mariadb/docker-entrypoint-initdb.d/db-sql-scripts/main-schemas.",
+      "revId": "bc22433af7e01eef9a91282e4bde3e3ab17cbf48",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
