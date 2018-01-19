@@ -210,6 +210,8 @@
         NEUTRON_NETWORK_TYPE varchar(20),
         DESCRIPTION varchar(1200),
         ORCHESTRATION_MODE varchar(20),
+        RESOURCE_CATEGORY varchar(20),
+        RESOURCE_SUB_CATEGORY varchar(20),
         HEAT_TEMPLATE_ARTIFACT_UUID varchar(200) not null,
         AIC_VERSION_MIN varchar(20) default 2.5 not null,
         AIC_VERSION_MAX varchar(20) default 2.5,
@@ -237,6 +239,7 @@
         TOSCA_CSAR_ARTIFACT_UUID varchar(200),
         CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
         MODEL_INVARIANT_UUID varchar(200) default 'MANUAL_RECORD' not null,
+        SERVICE_CATEGORY varchar(20),
         SERVICE_TYPE varchar(20),
         SERVICE_ROLE varchar(20),
         primary key (MODEL_UUID)
@@ -381,6 +384,8 @@
         ORCHESTRATION_MODE varchar(20) not null,
         AIC_VERSION_MIN varchar(20),
         AIC_VERSION_MAX varchar(20),
+        RESOURCE_CATEGORY varchar(20),
+        RESOURCE_SUB_CATEGORY varchar(20),
         HEAT_TEMPLATE_ARTIFACT_UUID varchar(200),
         CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
         primary key (MODEL_UUID)
