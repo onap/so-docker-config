@@ -276,9 +276,9 @@
     create table SERVICE_TO_RESOURCE_CUSTOMIZATIONS (
         MODEL_TYPE varchar(20) not null,
         RESOURCE_MODEL_CUSTOMIZATION_UUID varchar(200) not null,
-        CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
         SERVICE_MODEL_UUID varchar(200) not null,
-        primary key (MODEL_TYPE, RESOURCE_MODEL_CUSTOMIZATION_UUID)
+        CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
+        primary key (MODEL_TYPE, RESOURCE_MODEL_CUSTOMIZATION_UUID, SERVICE_MODEL_UUID)
     );
 
     create table TEMP_NETWORK_HEAT_TEMPLATE_LOOKUP (
