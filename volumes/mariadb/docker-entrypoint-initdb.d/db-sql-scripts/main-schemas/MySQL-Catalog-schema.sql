@@ -30,6 +30,8 @@
     drop table if exists ALLOTTED_RESOURCE;
 
     drop table if exists ALLOTTED_RESOURCE_CUSTOMIZATION;
+	
+	drop table if exists AR_RECIPE;
 
     drop table if exists HEAT_ENVIRONMENT;
 
@@ -111,6 +113,20 @@
         primary key (MODEL_CUSTOMIZATION_UUID)
     );
 
+	create table AR_RECIPE (
+        id integer not null auto_increment,
+        MODEL_NAME varchar(20) not null,
+        ACTION varchar(20) not null,
+        VERSION_STR varchar(20) not null,
+        SERVICE_TYPE varchar(45),
+        DESCRIPTION varchar(1200),
+        ORCHESTRATION_URI varchar(256) not null,
+        AR_PARAM_XSD varchar(2048),
+        RECIPE_TIMEOUT integer,
+        CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
+        primary key (id)
+    );
+	
     create table HEAT_ENVIRONMENT (
         ARTIFACT_UUID varchar(200) not null,
         NAME varchar(100) not null,
