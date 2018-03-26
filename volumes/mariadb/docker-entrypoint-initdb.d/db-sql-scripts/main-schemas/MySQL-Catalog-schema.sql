@@ -258,6 +258,8 @@
         SERVICE_CATEGORY varchar(20),
         SERVICE_TYPE varchar(20),
         SERVICE_ROLE varchar(20),
+        ENVIRONMENT_CONTEXT varchar(200) default null,
+        WORKLOAD_CONTEXT varchar(200) default null,
         primary key (MODEL_UUID)
     );
 
