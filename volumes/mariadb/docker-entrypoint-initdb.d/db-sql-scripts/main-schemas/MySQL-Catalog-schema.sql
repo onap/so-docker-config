@@ -30,8 +30,6 @@
     drop table if exists ALLOTTED_RESOURCE;
 
     drop table if exists ALLOTTED_RESOURCE_CUSTOMIZATION;
-	
-	drop table if exists AR_RECIPE;
 
     drop table if exists HEAT_ENVIRONMENT;
 
@@ -110,23 +108,11 @@
         MIN_INSTANCES integer,
         MAX_INSTANCES integer,
         CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
+        PROVIDING_SERVICE_MODEL_UUID varchar(255),
+        PROVIDING_SERVICE_MODEL_NAME varchar(255),
         primary key (MODEL_CUSTOMIZATION_UUID)
     );
 
-	create table AR_RECIPE (
-        id integer not null auto_increment,
-        MODEL_NAME varchar(20) not null,
-        ACTION varchar(20) not null,
-        VERSION_STR varchar(20) not null,
-        SERVICE_TYPE varchar(45),
-        DESCRIPTION varchar(1200),
-        ORCHESTRATION_URI varchar(256) not null,
-        AR_PARAM_XSD varchar(2048),
-        RECIPE_TIMEOUT integer,
-        CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
-        primary key (id)
-    );
-	
     create table HEAT_ENVIRONMENT (
         ARTIFACT_UUID varchar(200) not null,
         NAME varchar(100) not null,
@@ -258,8 +244,8 @@
         SERVICE_CATEGORY varchar(20),
         SERVICE_TYPE varchar(20),
         SERVICE_ROLE varchar(20),
-        ENVIRONMENT_CONTEXT varchar(200) default null,
-        WORKLOAD_CONTEXT varchar(200) default null,
+        ENVIRONMENT_CONTEXT varchar(255) default null,
+        WORKLOAD_CONTEXT varchar(255) default null,
         primary key (MODEL_UUID)
     );
 
@@ -419,6 +405,7 @@
         NF_TYPE varchar(200),
         NF_ROLE varchar(200),
         NF_NAMING_CODE varchar(200),
+        MULTI_STAGE_DESIGN varchar(200),
         VNF_RESOURCE_MODEL_UUID varchar(200) not null,
         CREATION_TIMESTAMP datetime default CURRENT_TIMESTAMP,
         primary key (MODEL_CUSTOMIZATION_UUID)
