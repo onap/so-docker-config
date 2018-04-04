@@ -93,6 +93,7 @@
     create table OPERATION_STATUS (
         SERVICE_ID varchar(255) not null,
         OPERATION_ID varchar(256) not null,
+        SERVICE_NAME varchar(256),
         OPERATION_TYPE varchar(256),
         USER_ID varchar(256),
         RESULT varchar(256),
