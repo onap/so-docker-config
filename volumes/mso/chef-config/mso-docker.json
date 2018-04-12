@@ -3,7 +3,6 @@
   "description": "MSO Docker Images",
   "chef_type": "environment",
   "json_class": "Chef::Environment",
-
   "default_attributes":
   {
     "mso_config_path": "/etc/mso/config.d/",
@@ -20,6 +19,11 @@
       "bpelAuth": "786864AA53D0DCD881AED1154230C0C3058D58B9339D2EFB6193A0F0D82530E1",
       "camundaURL": "http://mso:8080",
       "camundaAuth": "5119D1AF37F671FC01FFAD2151D93EFB2BBB503E879FD07104D024EDDF118FD1"
+    },
+
+    "mso-asdc-controller-config":
+    {
+      "aaiEndpoint": "https://aai.api.simpledemo.openecomp.org:8443",
     },
 
     "asdc-connections":
