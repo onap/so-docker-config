@@ -21,5 +21,5 @@
 # and service marks of AT&T Intellectual Property.
 #
 #
-cd /docker-entrypoint-initdb.d/db-sql-scripts/bulkload-files/demo-vfw
-mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < create_mso_db-demo-vfw.sql
+cd /docker-entrypoint-initdb.d/db-sql-scripts/bulkload-files/demo-vCPE
+mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < create_mso_db-demo-vCPE-vgw.sql
