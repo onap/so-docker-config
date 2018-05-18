@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_43715aa7",
+        "filename": "volumes/mso/chef-config/mso-docker.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2018-05-18T21:55:10Z",
+      "side": 1,
+      "message": "Unrelated to this patch but should this match so/chef repo config?\n\nso/chef repo is\"ueb1.simpledemo.openecomp.org:3904\" and here it is \"ueb01.simpledemo.openecomp.org:3904\"",
+      "range": {
+        "startLine": 229,
+        "startChar": 32,
+        "endLine": 229,
+        "endChar": 37
+      },
+      "revId": "d46886fa0922a425d908bb8f5ed60bf651b3ff7f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
