@@ -179,7 +179,7 @@
     create table MODEL_RECIPE (
         id integer not null auto_increment,
         MODEL_ID integer not null,
-        ACTION varchar(20) not null,
+        ACTION varchar(40) not null,
         SCHEMA_VERSION varchar(20),
         DESCRIPTION varchar(1200),
         ORCHESTRATION_URI varchar(256) not null,
@@ -192,7 +192,7 @@
     create table NETWORK_RECIPE (
         id integer not null auto_increment,
         MODEL_NAME varchar(20) not null,
-        ACTION varchar(20) not null,
+        ACTION varchar(40) not null,
         VERSION_STR varchar(20) not null,
         SERVICE_TYPE varchar(45),
         DESCRIPTION varchar(1200),
@@ -352,7 +352,7 @@
         VNF_TYPE varchar(200),
         VF_MODULE_MODEL_UUID varchar(100),
         VNF_COMPONENT_TYPE varchar(45) not null,
-        ACTION varchar(20) not null,
+        ACTION varchar(40) not null,
         SERVICE_TYPE varchar(45),
         VERSION varchar(20),
         DESCRIPTION varchar(1200),
@@ -366,7 +366,7 @@
     create table VNF_RECIPE (
         id integer not null auto_increment,
         VF_MODULE_ID varchar(100),
-        ACTION varchar(20) not null,
+        ACTION varchar(40) not null,
         VERSION_STR varchar(20) not null,
         VNF_TYPE varchar(200),
         SERVICE_TYPE varchar(45) default null,
