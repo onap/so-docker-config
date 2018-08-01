@@ -1,13 +1,4 @@
-DROP DATABASE IF EXISTS `camundabpmn`;
-
-CREATE DATABASE `camundabpmn`;
-
-USE `camundabpmn`;
-
-delete from mysql.user where User='camunda';
-CREATE USER 'camunda';
-GRANT ALL on camundabpmn.* to 'camunda' identified by 'camunda123' with GRANT OPTION;
-FLUSH PRIVILEGES;
+use camundabpmn;
 
 create table ACT_GE_PROPERTY (
     NAME_ varchar(64),

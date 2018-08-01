@@ -20,6 +20,18 @@
 # ECOMP and OpenECOMP are trademarks
 # and service marks of AT&T Intellectual Property.
 #
-#
-cd /docker-entrypoint-initdb.d/db-sql-scripts/bulkload-files/demo-vfw
-mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < create_mso_db-demo-vfw.sql
+
+echo "Creating camundabpmn database . . ."
+
+mysql -uroot -p$MYSQL_ROOT_PASSWORD << 'EOF' || exit 1
+DROP DATABASE IF EXISTS `camundabpmn`;
+CREATE DATABASE `camundabpmn`;
+DELETE FROM mysql.user WHERE User='camundauser';
+CREATE USER 'camundauser';
+GRANT ALL on camundabpmn.* to 'camundauser' identified by 'camunda123' with GRANT OPTION;
+FLUSH PRIVILEGES;
+EOF
+
+cd /docker-entrypoint-initdb.d/db-sql-scripts/camunda || exit 1
+mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_engine_7.8.0-ee.sql || exit 1
+mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_create_camunda_admin.sql || exit 1
