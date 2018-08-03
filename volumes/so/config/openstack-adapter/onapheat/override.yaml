@@ -2,6 +2,12 @@ server:
   port: 8087
  
 spring:
+  datasource:
+    url: jdbc:mariadb://mariadb:3306/catalogdb
+    username: cataloguser
+    password: catalog123
+    driver-class-name: org.mariadb.jdbc.Driver  
+
   security:
     usercredentials:
     -  
