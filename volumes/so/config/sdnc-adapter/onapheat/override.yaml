@@ -115,40 +115,40 @@ org:
                     sdncurl6: 'http://c1.vm1.sdnc.simpledemo.openecomp.org:8282/restconf/operations/VNF-API:'
                     sdncurl8: 'http://c1.vm1.sdnc.simpledemo.openecomp.org:8282/restconf/operations/NBNC-API:'
                     sdncurl9: http://c1.vm1.sdnc.simpledemo.openecomp.org:8282/restconf/operations/NORTHBOUND-API:service-topology-operation
-                    service:                  
+                    service:
                         infra:
                             service-topology-infra-activate-operation: POST|90000|sdncurl9|sdnc-request-header|com:att:sdnctl:northbound-api:v1
                             service-topology-infra-assign-operation: POST|120000|sdncurl9|sdnc-request-header|com:att:sdnctl:northbound-api:v1
                             service-topology-infra-delete-operation: POST|90000|sdncurl9|sdnc-request-header|com:att:sdnctl:northbound-api:v1
-                            service-topology-infra-release-operation: POST|90000|sdncurl9|sdnc-request-header|com:att:sdnctl:northbound-api:v1                       
+                            service-topology-infra-release-operation: POST|90000|sdncurl9|sdnc-request-header|com:att:sdnctl:northbound-api:v1
                     vfmodule:
                         '':
                             query: GET|60000|sdncurl12|
 
-spring:  
+spring:
   security:
     usercredentials:
-    -  
+    -
       username: sdnc
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: SDNC-Client
-    -  
+    -
       username: sitecontrol
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: SiteControl-Client
-    -  
+    -
       username: bpel
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: BPEL-Client
-    -  
+    -
       username: sniro
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: SNIRO-Client
-    -  
+    -
       username: apih
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: MSO-Client
-    -  
+    -
       username: mso_admin
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: ACTUATOR

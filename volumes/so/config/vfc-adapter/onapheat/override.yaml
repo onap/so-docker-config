@@ -1,15 +1,15 @@
 logging:
   path: logs
 
-spring: 
+spring:
   datasource:
-     driver-class-name: org.mariadb.jdbc.Driver 
+     driver-class-name: org.mariadb.jdbc.Driver
      url: jdbc:mariadb://mariadb:3306/requestdb
      username: requestuser
      password: request123
-     dbcp2: 
+     dbcp2:
       initial-size: 5
-      max-total: 20 
+      max-total: 20
       validation-query: select 1
       test-on-borrow: true
 
@@ -26,9 +26,3 @@ management:
     enabled: false
     basic:
       enabled: false
-  metrics:
-    se-global-registry: false
-    export:
-      prometheus:
-        enabled: true # Whether exporting of metrics to Prometheus is enabled.
-        step: 1m # Step size (i.e. reporting frequency) to use.

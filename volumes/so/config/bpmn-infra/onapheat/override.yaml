@@ -29,7 +29,7 @@ mso:
     db:
       auth: 26AFB797A6A57960D5D718491925C50F77CDC22AC394B3DBA09950D8FD1C0764
       password: wLg4sjrAFUS8rfVfdvTXeQ==
-      endpoint: http://c1.vm1.mso.simpledemo.openecomp.org:8083/services/RequestsDbAdapter      
+      endpoint: http://c1.vm1.mso.simpledemo.openecomp.org:8083/services/RequestsDbAdapter
       spring:
         endpoint: http://c1.vm1.mso.simpledemo.openecomp.org:8083
     network:
@@ -71,7 +71,7 @@ mso:
     auth: Basic YnBlbDptc28tZGItMTUwNyE=
   default:
     adapter:
-      namespace: http://org.openecomp.mso 
+      namespace: http://org.openecomp.mso
   healthcheck:
     log:
       debug: 'false'
@@ -80,12 +80,12 @@ mso:
       id: testCustIdInfra
   msoKey: 07a7159d3bf51a0e53be7a8f89699be7
   po:
-    timeout: PT60S  
+    timeout: PT60S
   request:
     db:
       endpoint: http://c1.vm1.mso.simpledemo.openecomp.org:8083/
   rollback: 'true'
-  sdnc:    
+  sdnc:
     password: 3141634BF7E070AA289CF2892C986C0B
   service:
     agnostic:
@@ -97,12 +97,12 @@ mso:
     auth: test:testpwd
     callback: http://c1.vm1.mso.simpledemo.openecomp.org:8086/adapters/rest/SDNCNotify
     endpoint: http://replaceme:28090/optimizationInstance/V1/create
-    timeout: PT30M  
+    timeout: PT30M
   workflow:
     CreateGenericVNFV1:
       aai:
         volume-group:
-          uri: /aai/v6/cloud-infrastructure/volume-groups/volume-group   
+          uri: /aai/v6/cloud-infrastructure/volume-groups/volume-group
     default:
       aai:
         version: '8'
@@ -166,7 +166,7 @@ mso:
     global:
       default:
         aai:
-          namespace: http://org.openecomp.aai.inventory/   
+          namespace: http://org.openecomp.aai.inventory/
     message:
       endpoint: http://c1.vm1.mso.simpledemo.openecomp.org:8081/mso/WorkflowMessage
     notification:
@@ -199,17 +199,17 @@ sdnc:
   auth: Basic YWRtaW46YWRtaW4=
   host: https://localhost:8443
   path: /restconf/operations/GENERIC-RESOURCE-API
-      
+
 appc:
   client:
     topic:
-      read: 
+      read:
         name: APPC-LCM-WRITE
-        timeout: 360000 
+        timeout: 360000
       write: APPC-LCM-READ
       sdnc:
         read:
-          name: SDNC-LCM-WRITE          
+          name: SDNC-LCM-WRITE
         write: SDNC-LCM-READ
     response:
       timeout: 360000
@@ -221,15 +221,15 @@ server:
   port: 8081
   tomcat:
     max-threads: 50
-spring: 
+spring:
   datasource:
-     driver-class-name: org.mariadb.jdbc.Driver 
+     driver-class-name: org.mariadb.jdbc.Driver
      url: jdbc:mariadb://mariadb:3306/camundabpmn
      username: camundauser
      password: camunda123
-     dbcp2: 
+     dbcp2:
       initial-size: 5
-      max-total: 20 
+      max-total: 20
       validation-query: select 1
       test-on-borrow: true
   security:
@@ -241,20 +241,20 @@ spring:
     -
       username: sdncaBpmn
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
-      role: BPMN-Client 
+      role: BPMN-Client
     -
       username: poBpmn
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: BPMN-Client
-    -  
+    -
       username: wmaBpmn
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: BPMN-Client
-    -  
+    -
       username: sniro
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: SNIRO-Client
-    -  
+    -
       username: mso_admin
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: ACTUATOR

@@ -13,7 +13,7 @@ mso:
         endpoint: "http://c1.vm1.mso.simpledemo.openecomp.org:8082"
   db:
     auth: Basic cGFzc3dvcmQxJA==
-  config: 
+  config:
     path: /src/main/resources/
   infra:
     default:
@@ -29,7 +29,7 @@ mso:
     homing:
       sdna:
         url: http://c1.vm1.mso.simpledemo.openecomp.org:8086/
-        password: 4112B789E942B161228F7D5AFC654C0F  
+        password: 4112B789E942B161228F7D5AFC654C0F
   bpelURL: http://c1.vm1.mso.simpledemo.openecomp.org:8082/
   bpelAuth: 786864AA53D0DCD881AED1154230C0C3058D58B9339D2EFB6193A0F0D82530E1
   camundaURL: http://c1.vm1.mso.simpledemo.openecomp.org:8082/
@@ -65,15 +65,14 @@ mso:
 spring:
   datasource:
     url: jdbc:mariadb://mariadb:3306/catalogdb
-    username: ${MYSQL_ROOT_USERNAME}
-    password: ${MYSQL_ROOT_PASSWORD}
+    username: cataloguser
+    password: catalog123
     driver-class-name: org.mariadb.jdbc.Driver
-    dbcp2: 
+    dbcp2:
       initial-size: 5
-      max-total: 20 
+      max-total: 20
       validation-query: select 1
-      test-on-borrow: true 
-
+      test-on-borrow: true
   jpa:
       show-sql: true
       hibernate:
@@ -83,36 +82,39 @@ spring:
         enable-lazy-load-no-trans: true
   jersey:
     type: filter
+
   security:
     usercredentials:
-    -  
+    -
       username: sitecontrol
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
-      role: SiteControl-Client 
-    -  
+      role: SiteControl-Client
+    -
       username: gui
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
-      role: GUI-Client  
-    -  
+      role: GUI-Client
+    -
       username: infraportal
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
-      role: InfraPortal-Client        
-    -  
+      role: InfraPortal-Client
+    -
       username: bpel
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
-      role: BPEL-Client   
-    -  
+      role: BPEL-Client
+    -
       username: mso_admin
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
-      role: ACTUATOR      
+      role: ACTUATOR
+
 request:
   datasource:
     url: jdbc:mariadb://mariadb:3306/requestdb
-    username: ${MYSQL_ROOT_USERNAME}
-    password: ${MYSQL_ROOT_PASSWORD}
-    driver-class-name: org.mariadb.jdbc.Driver  
-    dbcp2: 
+    username: requestuser
+    password: request123
+    driver-class-name: org.mariadb.jdbc.Driver
+    dbcp2:
       initial-size: 5
-      max-total: 20 
+      max-total: 20
       validation-query: select 1
       test-on-borrow: true
+

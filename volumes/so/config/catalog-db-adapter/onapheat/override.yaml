@@ -20,6 +20,11 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     initialize: false
     initialization-mode: never
+    dbcp2:
+      initial-size: 5
+      max-total: 20
+      validation-query: select 1
+      test-on-borrow: true
   jpa:
     generate-ddl: false
     show-sql: false
@@ -34,13 +39,13 @@ spring:
       username: bpel
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: BPEL-Client
-    -  
+    -
       username: mso_admin
       password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
       role: ACTUATOR
 
 #Actuator
-management: 
+management:
   context-path: /manage
 
 flyway:
