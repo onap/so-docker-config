@@ -1,18 +1,22 @@
-# will be used as entry in DB to say SITE OFF/ON for healthcheck
-
 server:
-    port: 8083
+    port: 8082
     tomcat:
         max-threads: 50
 ssl-enable: false
 mso:
   logPath: logs
-  site-name: localSite
+  site-name: onapheat
+  catalog:
+    db:
+      spring:
+        endpoint: http://c1.vm1.mso.simpledemo.openecomp.org:8082
+  db:
+    auth: Basic YnBlbDpwYXNzd29yZDEk
 spring:
   datasource:
-    url: jdbc:mariadb://mariadb:3306/requestdb
-    username: so
-    password: so123
+    url: jdbc:mariadb://mariadb:3306/catalogdb
+    username: cataloguser
+    password: catalog123
     driver-class-name: org.mariadb.jdbc.Driver
     initialize: false
     initialization-mode: never
@@ -41,7 +45,6 @@ management:
 
 flyway:
   baseline-on-migrate: true
-  url: jdbc:mariadb://mariadb:3306/requestdb
-  user: so
-  password: so123
-      
+  url: jdbc:mariadb://mariadb:3306/catalogdb
+  user: cataloguser
+  password: catalog123
