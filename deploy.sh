@@ -98,12 +98,10 @@ function pull_docker_images() {
     # get images
     $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/openecomp/mso:$MSO_DOCKER_IMAGE_VERSION
     $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/openecomp/mso:$MSO_DOCKER_IMAGE_VERSION openecomp/mso:latest
-    $DOCKER_CMD rmi $NEXUS_DOCKER_REPO_MSO/openecomp/mso:$MSO_DOCKER_IMAGE_VERSION
     
     echo "Using Nexus for MARIADB: $NEXUS_DOCKER_REPO_MARIADB (user "$NEXUS_USERNAME_MARIADB")"
     $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MARIADB/mariadb:10.1.11
     $DOCKER_CMD tag  $NEXUS_DOCKER_REPO_MARIADB/mariadb:10.1.11  mariadb:10.1.11
-    $DOCKER_CMD rmi $NEXUS_DOCKER_REPO_MARIADB/mariadb:10.1.11
 
 }
 
