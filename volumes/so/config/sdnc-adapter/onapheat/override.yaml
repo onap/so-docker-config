@@ -1,6 +1,6 @@
 server:
     port: 8086
-    
+
 mso:
     async:
         core-pool-size: 50

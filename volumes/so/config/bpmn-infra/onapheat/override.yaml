@@ -218,15 +218,15 @@ appc:
     service: ueb
     poolMembers: ueb1.simpledemo.openecomp.org:3904,ueb2.simpledemo.openecomp.org:3904
 server:
-  port: 8080
+  port: 8081
   tomcat:
     max-threads: 50
 spring: 
   datasource:
      driver-class-name: org.mariadb.jdbc.Driver 
      url: jdbc:mariadb://mariadb:3306/camundabpmn
-     username: ${DB_USERNAME}
-     password: ${DB_PASSWORD}
+     username: camundauser
+     password: camunda123
      dbcp2: 
       initial-size: 5
       max-total: 20 
