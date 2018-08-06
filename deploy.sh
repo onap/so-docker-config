@@ -6,11 +6,6 @@
 # env DOCKER_HOST (optional)
 #     | sets the docker host to be used if not local unix socket
 #
-# env MSO_CONFIG_UPDATES (optional)
-#     | json structure that matches volumes/mso/chef-config/mso-docker.json
-#     | elements whose value needs to be updated before the deployment
-#     | phase.
-#
 # env MSO_DOCKER_IMAGE_VERSION
 #     | json structure that matches volumes/mso/chef-config/mso-docker.json
 #     | elements whose value needs to be updated before the deployment
@@ -30,11 +25,6 @@ if [ "$#" -ne 6 ] && [ $NEXUS -eq 1 ]; then
      
               - env MSO_DOCKER_IMAGE_VERSION (required)
                  sets the mso docker image version
-     
-              - env MSO_CONFIG_UPDATES (optional) 
-                json structure that matches volumes/mso/chef-config/mso-docker.json 
-                elements whose value needs to be updated before the deployment 
-                phase."
         
         exit 1
 fi
@@ -79,16 +69,6 @@ function container_name() {
     echo ${BASE}_${SERVICE}_1
 }
 
-function update_json_config() {
-    if [ -n "$MSO_CONFIG_UPDATES" ];
-    then   
-        chmod u+x $SCRIPT_DIR/json_updater.py
-        echo $MSO_CONFIG_UPDATES | $SCRIPT_DIR/json_updater.py $SCRIPT_DIR/volumes/mso/chef-config/mso-docker.json
-        echo "MSO docker JSON updated"
-    fi
-    
-}
-
 function pull_docker_images() {
     echo "Using Nexus for MSO: $NEXUS_DOCKER_REPO_MSO (user "$NEXUS_USERNAME_MSO")"
     # login to nexus
@@ -96,8 +76,29 @@ function pull_docker_images() {
     $DOCKER_CMD login -u $NEXUS_USERNAME_MARIADB -p $NEXUS_PASSWD_MARIADB $NEXUS_DOCKER_REPO_MARIADB
     
     # get images
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/openecomp/mso:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/openecomp/mso:$MSO_DOCKER_IMAGE_VERSION openecomp/mso:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/api-handler-infra:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/api-handler-infra:$MSO_DOCKER_IMAGE_VERSION so/api-handler-infra:latest
+    
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/bpmn-infra:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/bpmn-infra:$MSO_DOCKER_IMAGE_VERSION so/bpmn-infra:latest
+    
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/asdc-controller:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/asdc-controller:$MSO_DOCKER_IMAGE_VERSION so/asdc-controller:latest
+    
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/vfc-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/vfc-adapter:$MSO_DOCKER_IMAGE_VERSION so/vfc-adapter:latest
+        
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/openstack-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/openstack-adapter:$MSO_DOCKER_IMAGE_VERSION so/openstack-adapter:latest
+    
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/catalog-db-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/catalog-db-adapter:$MSO_DOCKER_IMAGE_VERSION so/catalog-db-adapter:latest
+    
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/request-db-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/request-db-adapter:$MSO_DOCKER_IMAGE_VERSION so/request-db-adapter:latest
+    
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/sdnc-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/sdnc-adapter:$MSO_DOCKER_IMAGE_VERSION so/sdnc-adapter:latest
     
     echo "Using Nexus for MARIADB: $NEXUS_DOCKER_REPO_MARIADB (user "$NEXUS_USERNAME_MARIADB")"
     $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MARIADB/mariadb:10.1.11
@@ -130,7 +131,6 @@ function wait_for_mariadb() {
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 init_docker_command
-update_json_config
 if [ $NEXUS -eq 1 ]; then
     pull_docker_images
 fi
