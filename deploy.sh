@@ -156,4 +156,4 @@ fi
 $DOCKER_COMPOSE_CMD up -d --no-recreate mariadb 
 CONTAINER_NAME=$(container_name mariadb)
 wait_for_mariadb $CONTAINER_NAME
-$DOCKER_COMPOSE_CMD up -d mso 
+$DOCKER_COMPOSE_CMD up

@@ -26,7 +26,7 @@ services:
   catalog-db-adapter:
     image: so/catalog-db-adapter
     ports:
-      - "8082"
+      - "8082:8082"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/catalog-db-adapter/onapheat:/app/config
@@ -59,7 +59,7 @@ services:
   request-db-adapter:
     image: so/request-db-adapter
     ports:
-      - "8083"
+      - "8083:8083"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/request-db-adapter/onapheat:/app/config
@@ -93,7 +93,7 @@ services:
   sdnc-adapter:
     image: so/sdnc-adapter
     ports:
-      - "8086"
+      - "8086:8086"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/sdnc-adapter/onapheat:/app/config
@@ -128,7 +128,7 @@ services:
   openstack-adapter:
     image: so/openstack-adapter
     ports:
-      - "8087"
+      - "8087:8087"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/openstack-adapter/onapheat:/app/config
@@ -163,7 +163,7 @@ services:
   vfc-adapter:
     image: so/vfc-adapter
     ports:
-      - "8084"
+      - "8084:8084"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/vfc-adapter/onapheat:/app/config
@@ -198,7 +198,7 @@ services:
   asdc-controller:
     image: so/asdc-controller
     ports:
-      - "8085"
+      - "8085:8085"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/asdc-controller/onapheat:/app/config
@@ -233,7 +233,7 @@ services:
   bpmn-infra:
     image: so/bpmn-infra
     ports:
-      - "8081"
+      - "8081:8081"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/bpmn-infra/onapheat:/app/config
@@ -268,7 +268,7 @@ services:
   api-handler-infra:
     image: so/api-handler-infra
     ports:
-      - "8080"
+      - "8080:8080"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/api-handler-infra/onapheat:/app/config
