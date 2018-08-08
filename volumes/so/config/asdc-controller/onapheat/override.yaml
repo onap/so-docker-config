@@ -20,11 +20,11 @@ spring:
     usercredentials:
     -
       username: asdc
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: Asdc-Client
     -
       username: mso_admin
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: ACTUATOR
 
 request:

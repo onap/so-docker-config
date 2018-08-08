@@ -17,27 +17,27 @@ spring:
     usercredentials:
     -
       username: sdnc
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: SDNC-Client
     -
       username: sitecontrol
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: SiteControl-Client
     -
       username: bpel
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: BPEL-Client
     -
       username: sniro
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: SNIRO-Client
     -
       username: apih
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: MSO-Client
     -
       username: mso_admin
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: ACTUATOR
 
 

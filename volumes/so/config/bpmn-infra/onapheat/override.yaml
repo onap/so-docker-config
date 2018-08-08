@@ -79,7 +79,6 @@ mso:
   infra:
     customer:
       id: testCustIdInfra
-  msoKey: 07a7159d3bf51a0e53be7a8f89699be7
   po:
     timeout: PT60S
   request:
@@ -237,25 +236,25 @@ spring:
     usercredentials:
     -
       username: apihBpmn
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: BPMN-Client
     -
       username: sdncaBpmn
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: BPMN-Client
     -
       username: poBpmn
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: BPMN-Client
     -
       username: wmaBpmn
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: BPMN-Client
     -
       username: sniro
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: SNIRO-Client
     -
       username: mso_admin
-      password: '$2b$10$byoF5q.VngZd8nj63q2Rm.bbAGUQrNG3DliPtc5l9nJIbXpXyCfrG'
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: ACTUATOR
