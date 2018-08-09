@@ -28,7 +28,7 @@ mso:
     completemsoprocess:
       endpoint:  http://c1.vm1.mso.simpledemo.onap.org:8081/CompleteMsoProcess
     db:
-      auth: 26AFB797A6A57960D5D718491925C50F77CDC22AC394B3DBA09950D8FD1C0764
+      auth: 33293332AEC4930F655D8E2E8BB08937
       password: wLg4sjrAFUS8rfVfdvTXeQ==
       endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/services/RequestsDbAdapter
       spring:
@@ -41,8 +41,8 @@ mso:
       db:
         endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/services/RequestsDbAdapter
     po:
-      auth: 757A94191D685FD2092AC1490730A4FC
-      password: 3141634BF7E070AA289CF2892C986C0B
+      auth: 33293332AEC4930F655D8E2E8BB08937
+      password: B8EBDE0311F0AF355CF3F2FD505A8CAD
     sdnc:
       endpoint: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/SDNCAdapter
       rest:
@@ -65,11 +65,11 @@ mso:
   callbackRetryAttempts: '5'
   catalog:
     db:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082/ecomp/mso/catalog
+      endpoint: http://catalog-db-adapter:8082/ecomp/mso/catalog
       spring:
         endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
   db:
-    auth: Basic YnBlbDptc28tZGItMTUwNyE=
+    auth: Basic YnBlbDpwYXNzd29yZDEk
   default:
     adapter:
       namespace: http://org.onap.mso
@@ -196,8 +196,8 @@ policy:
   endpoint: https://localhost:8081/pdp/api/
   environment: TEST
 sdnc:
-  auth: Basic YWRtaW46YWRtaW4=
-  host: https://localhost:8443
+  auth: Basic YWRtaW46S3A4Yko0U1hzek0wV1hsaGFrM2VIbGNzZTJnQXc4NHZhb0dHbUp2VXkyVQ==
+  host: http://c1.vm1.sdnc.simpledemo.onap.org:8282
   path: /restconf/operations/GENERIC-RESOURCE-API
 
 appc:

@@ -54,8 +54,8 @@ mso:
   asdc-connections:
     asdc-controller1:
       user: mso
-      consumerGroup: sdc-OpenSource-Env1
-      consumerId: sdc-COpenSource-Env11
+      consumerGroup: SO-OpenSource-Env11
+      consumerId: SO-COpenSource-Env11
       environmentName: AUTO
       asdcAddress: c2.vm1.sdc.simpledemo.onap.org:8443
       password: 613AF3483E695524F9857643B697FA51C7A9A0951094F53791485BF3458F9EADA37DBACCCEBD0CB242B85B4062745247
