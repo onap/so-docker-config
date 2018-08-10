@@ -48,7 +48,7 @@ org:
         default_keystone_url_version: /v2.0
         default_keystone_reg_ex: "/[vV][0-9]"
         vnf:
-          bpelauth: 5119D1AF37F671FC01FFAD2151D93EFB2BBB503E879FD07104D024EDDF118FD1
+          bpelauth: A7FC9B308B7AF7A269072BA729A345625E0381E3071DE7EE50603677CB69C515
           checkRequiredParameters: true
           addGetFilesOnVolumeReq: false
           sockettimeout: 30
@@ -59,7 +59,7 @@ org:
           valet_enabled: false
           fail_requests_on_valet_failure: false
         network:
-          bpelauth: 5119D1AF37F671FC01FFAD2151D93EFB2BBB503E879FD07104D024EDDF118FD1
+          bpelauth: A7FC9B308B7AF7A269072BA729A345625E0381E3071DE7EE50603677CB69C515
           sockettimeout: 5
           connecttimeout: 5
           retrycount: 5
