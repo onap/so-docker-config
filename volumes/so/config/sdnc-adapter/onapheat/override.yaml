@@ -71,7 +71,7 @@ org:
                             changedelete: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
                             delete: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
                             rollback: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
-                    bpelauth: c2RuY2FCcG1uOnBhc3N3b3JkMSQ=
+                    bpelauth: 023A0244AB819A0DE0131DBC3AC5FAB4D8544E1CB1A7FE3CE60F6E3292AC0D93
                     bpelurl: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/SDNCAdapterCallbackService
                     generic-resource:
                         network-topology-operation:

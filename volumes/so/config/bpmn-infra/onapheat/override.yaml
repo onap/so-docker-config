@@ -53,7 +53,7 @@ mso:
     vnf:
       endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/VnfAdapter
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/vnfs/v1/vnfs
+        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/v1/vnfs
     volume-groups:
       rest:
         endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/v1/volume-groups
