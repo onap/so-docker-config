@@ -12,7 +12,7 @@ mso:
           spring:
             endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
     db:
-      auth: Basic cGFzc3dvcmQxJA==
+      auth: Basic YnBlbDpwYXNzd29yZDEk
     site-name: onapheat
 org:
     onap:
@@ -71,7 +71,7 @@ org:
                             changedelete: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
                             delete: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
                             rollback: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
-                    bpelauth: cGFzc3dvcmQxJA==
+                    bpelauth: c2RuY2FCcG1uOnBhc3N3b3JkMSQ=
                     bpelurl: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/SDNCAdapterCallbackService
                     generic-resource:
                         network-topology-operation:
@@ -106,7 +106,7 @@ org:
                     myurl: http://c1.vm1.mso.simpledemo.onap.org:8081/adapters/rest/SDNCNotify
                     rest:
                         bpelurl: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
-                    sdncauth: 406B2AE613211B6FB52466DE6E1769AC
+                    sdncauth: 263f7d5f944d4d0c76db74b4148bec67d0bc796a874bc0d2a2a12aae89a866aa69133f700f391f784719a37f6a68d29bf5a2fbae1dab0402db7788c800c5ba73
                     sdncconnecttime: 5000
                     sdncurl10: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/GENERIC-RESOURCE-API:'
                     sdncurl11: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/VNFTOPOLOGYAIC-API:'
