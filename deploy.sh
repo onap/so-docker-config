@@ -86,29 +86,29 @@ function pull_docker_images() {
     $DOCKER_CMD login -u $NEXUS_USERNAME_MARIADB -p $NEXUS_PASSWD_MARIADB $NEXUS_DOCKER_REPO_MARIADB
     
     # get images
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/api-handler-infra:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/api-handler-infra:$MSO_DOCKER_IMAGE_VERSION so/api-handler-infra:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/api-handler-infra:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/api-handler-infra:$MSO_DOCKER_IMAGE_VERSION onap/so/api-handler-infra:latest
     
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/bpmn-infra:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/bpmn-infra:$MSO_DOCKER_IMAGE_VERSION so/bpmn-infra:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/bpmn-infra:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/bpmn-infra:$MSO_DOCKER_IMAGE_VERSION onap/so/bpmn-infra:latest
     
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/asdc-controller:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/asdc-controller:$MSO_DOCKER_IMAGE_VERSION so/asdc-controller:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/asdc-controller:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/asdc-controller:$MSO_DOCKER_IMAGE_VERSION onap/so/asdc-controller:latest
     
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/vfc-adapter:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/vfc-adapter:$MSO_DOCKER_IMAGE_VERSION so/vfc-adapter:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/vfc-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/vfc-adapter:$MSO_DOCKER_IMAGE_VERSION onap/so/vfc-adapter:latest
         
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/openstack-adapter:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/openstack-adapter:$MSO_DOCKER_IMAGE_VERSION so/openstack-adapter:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/openstack-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/openstack-adapter:$MSO_DOCKER_IMAGE_VERSION onap/so/openstack-adapter:latest
     
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/catalog-db-adapter:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/catalog-db-adapter:$MSO_DOCKER_IMAGE_VERSION so/catalog-db-adapter:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/catalog-db-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/catalog-db-adapter:$MSO_DOCKER_IMAGE_VERSION onap/so/catalog-db-adapter:latest
     
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/request-db-adapter:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/request-db-adapter:$MSO_DOCKER_IMAGE_VERSION so/request-db-adapter:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/request-db-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/request-db-adapter:$MSO_DOCKER_IMAGE_VERSION onap/so/request-db-adapter:latest
     
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/so/sdnc-adapter:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/so/sdnc-adapter:$MSO_DOCKER_IMAGE_VERSION so/sdnc-adapter:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/sdnc-adapter:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/sdnc-adapter:$MSO_DOCKER_IMAGE_VERSION onap/so/sdnc-adapter:latest
     
     echo "Using Nexus for MARIADB: $NEXUS_DOCKER_REPO_MARIADB (user "$NEXUS_USERNAME_MARIADB")"
     $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MARIADB/mariadb:10.1.11

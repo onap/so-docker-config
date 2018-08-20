@@ -24,7 +24,7 @@ services:
         max-file: "5"
 ################################################################################
   catalog-db-adapter:
-    image: so/catalog-db-adapter
+    image: onap/so/catalog-db-adapter
     ports:
       - "8082:8082"
     volumes:
@@ -57,7 +57,7 @@ services:
       - "/app/start-app.sh"
 ################################################################################
   request-db-adapter:
-    image: so/request-db-adapter
+    image: onap/so/request-db-adapter
     ports:
       - "8083:8083"
     volumes:
@@ -91,7 +91,7 @@ services:
       - "/app/start-app.sh"
 ################################################################################
   sdnc-adapter:
-    image: so/sdnc-adapter
+    image: onap/so/sdnc-adapter
     ports:
       - "8090:8086"
     volumes:
@@ -126,7 +126,7 @@ services:
       - "/app/start-app.sh"
 ################################################################################
   openstack-adapter:
-    image: so/openstack-adapter
+    image: onap/so/openstack-adapter
     ports:
       - "8087:8087"
     volumes:
@@ -161,7 +161,7 @@ services:
       - "/app/start-app.sh"
 ################################################################################
   vfc-adapter:
-    image: so/vfc-adapter
+    image: onap/so/vfc-adapter
     ports:
       - "8084:8084"
     volumes:
@@ -196,7 +196,7 @@ services:
       - "/app/start-app.sh"
 ################################################################################
   asdc-controller:
-    image: so/asdc-controller
+    image: onap/so/asdc-controller
     ports:
       - "8085:8085"
     volumes:
@@ -231,7 +231,7 @@ services:
       - "/app/start-app.sh"
 ################################################################################
   bpmn-infra:
-    image: so/bpmn-infra
+    image: onap/so/bpmn-infra
     ports:
       - "8081:8081"
     volumes:
@@ -266,7 +266,7 @@ services:
       - "/app/start-app.sh"
 ################################################################################
   api-handler-infra:
-    image: so/api-handler-infra
+    image: onap/so/api-handler-infra
     ports:
       - "8080:8080"
     volumes:
