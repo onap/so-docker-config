@@ -1,5 +1,5 @@
 #!/bin/bash
-# Deployment script for MSO lab
+# Deployment script for SO lab
 # ===================================================
 # Available parameters :
 #
@@ -149,6 +149,9 @@ fi
 #$DOCKER_COMPOSE_CMD stop 
 #$DOCKER_COMPOSE_CMD rm -f -v
 
+#brought in the down to stop and remove the images created by up
+$DOCKER_COMPOSE_CMD down
+
 # deploy
 #Running docker-compose up -d starts the containers in the background and leaves them running.
 #If there are existing containers for a service, and the service’s configuration or image was changed after the container’s creation, docker-compose up picks up the changes by stopping and recreating the containers (preserving mounted volumes). To prevent Compose from picking up changes, use the --no-recreate flag.
@@ -156,4 +159,5 @@ fi
 $DOCKER_COMPOSE_CMD up -d --no-recreate mariadb 
 CONTAINER_NAME=$(container_name mariadb)
 wait_for_mariadb $CONTAINER_NAME
-$DOCKER_COMPOSE_CMD up
+#adding the detach mode (run in background)
+$DOCKER_COMPOSE_CMD up -d
