@@ -195,15 +195,15 @@ services:
       - --
       - "/app/start-app.sh"
 ################################################################################
-  asdc-controller:
-    image: onap/so/asdc-controller
+  sdc-controller:
+    image: onap/so/sdc-controller
     ports:
       - "8085:8085"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
-      - ./volumes/so/config/asdc-controller/onapheat:/app/config
+      - ./volumes/so/config/sdc-controller/onapheat:/app/config
     environment:
-      - APP=asdc-controller
+      - APP=sdc-controller
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
 #     - KEYSTORE=msoClientKeyStore-onapheat.jks
@@ -211,7 +211,7 @@ services:
 #     - TRUSTSTORE=msoTrustStore.jks
 #     - TRUSTSTORE_PASSWORD=password
     hostname:
-      asdc-controller.so.testlab.onap.org
+      sdc-controller.so.testlab.onap.org
     depends_on:
       - mariadb
       - catalog-db-adapter

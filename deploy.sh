@@ -92,8 +92,8 @@ function pull_docker_images() {
     $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/bpmn-infra:$MSO_DOCKER_IMAGE_VERSION
     $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/bpmn-infra:$MSO_DOCKER_IMAGE_VERSION onap/so/bpmn-infra:latest
     
-    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/asdc-controller:$MSO_DOCKER_IMAGE_VERSION
-    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/asdc-controller:$MSO_DOCKER_IMAGE_VERSION onap/so/asdc-controller:latest
+    $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/sdc-controller:$MSO_DOCKER_IMAGE_VERSION
+    $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/sdc-controller:$MSO_DOCKER_IMAGE_VERSION onap/so/sdc-controller:latest
     
     $DOCKER_CMD pull $NEXUS_DOCKER_REPO_MSO/onap/so/vfc-adapter:$MSO_DOCKER_IMAGE_VERSION
     $DOCKER_CMD tag $NEXUS_DOCKER_REPO_MSO/onap/so/vfc-adapter:$MSO_DOCKER_IMAGE_VERSION onap/so/vfc-adapter:latest
