@@ -110,9 +110,9 @@ mso:
       aai:
         version: '14'
         cloud-region:
-          version: '9'
+          version: '14'
         generic-vnf:
-          version: '9'
+          version: '14'
         v14:
           customer:
             uri: /aai/v14/business/customers/customer
