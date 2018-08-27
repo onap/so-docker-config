@@ -93,7 +93,7 @@ mso:
       spring:
         endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
   db:
-    auth: Basic YnBlbDptc28tZGItMTUwNyE=
+    auth: Basic YnBlbDpwYXNzd29yZDEk
   site-name: localDevEnv
   async:
     core-pool-size: 50
