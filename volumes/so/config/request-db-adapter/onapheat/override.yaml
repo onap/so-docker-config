@@ -8,6 +8,10 @@ ssl-enable: false
 mso:
   logPath: logs
   site-name: localSite
+  adapters:
+    requestDb:
+      endpoint: http://request-db-adapter:8083
+      auth: Basic YnBlbDpwYXNzd29yZDEk
 spring:
   datasource:
     url: jdbc:mariadb://mariadb:3306/requestdb

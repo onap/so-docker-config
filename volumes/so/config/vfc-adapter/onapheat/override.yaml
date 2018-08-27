@@ -19,6 +19,10 @@ server:
         max-threads: 50
 mso:
   site-name: localSite
+  adapters:
+    requestDb:
+      endpoint: http://request-db-adapter:8083
+      auth: Basic YnBlbDpwYXNzd29yZDEk
 
 #Actuator
 management:

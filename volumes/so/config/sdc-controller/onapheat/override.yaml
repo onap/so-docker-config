@@ -49,6 +49,10 @@ mso:
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
   site-name: onapheat
+  adapters:
+    requestDb:
+      endpoint: http://request-db-adapter:8083
+      auth: Basic YnBlbDpwYXNzd29yZDEk
   aai:
     endpoint: https://aai.api.simpledemo.onap.org:8443
   asdc-connections:

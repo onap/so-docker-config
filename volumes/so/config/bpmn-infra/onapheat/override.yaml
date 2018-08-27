@@ -27,6 +27,9 @@ mso:
   adapters:
     completemsoprocess:
       endpoint:  http://c1.vm1.mso.simpledemo.onap.org:8081/CompleteMsoProcess
+    requestDb:
+      endpoint: http://request-db-adapter:8083
+      auth: Basic YnBlbDpwYXNzd29yZDEk
     db:
       auth: 33293332AEC4930F655D8E2E8BB08937
       password: wLg4sjrAFUS8rfVfdvTXeQ==
