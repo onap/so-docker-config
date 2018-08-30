@@ -93,7 +93,7 @@ services:
   sdnc-adapter:
     image: onap/so/sdnc-adapter
     ports:
-      - "8090:8086"
+      - "8086:8086"
     volumes:
       - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
       - ./volumes/so/config/sdnc-adapter/onapheat:/app/config
