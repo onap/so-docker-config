@@ -145,6 +145,10 @@ mso:
             uri: /aai/v14/network/vces/vce
           vpn-binding:
             uri: /aai/v14/network/vpn-bindings/vpn-binding
+          sp-partner:
+            uri: /aai/v14/business/sp-partners/sp-partner
+          device:
+            uri: /aai/v13/network/devices/device
         v11:
           customer:
             uri: /aai/v11/business/customers/customer
