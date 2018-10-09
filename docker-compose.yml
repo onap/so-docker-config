@@ -299,3 +299,38 @@ services:
       - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
+################################################################################
+  so-monitoring:
+    image: onap/so/so-monitoring
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
+      - ./volumes/so/config/so-monitoring/onapheat:/app/config
+    environment:
+      - APP=so-monitoring
+      - JVM_ARGS=-Xms64m -Xmx512m
+      - DB_HOST=mariadb
+#     - KEYSTORE=msoClientKeyStore-onapheat.jks
+#     - KEYSTORE_PASSWORD=password
+#     - TRUSTSTORE=msoTrustStore.jks
+#     - TRUSTSTORE_PASSWORD=password
+    hostname:
+      so-monitoring.so.testlab.onap.org
+    depends_on:
+      - mariadb
+      - catalog-db-adapter
+      - request-db-adapter
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "5"
+    command:
+      - /app/wait-for.sh
+      - -q
+      - -t
+      - "300"
+      - request-db-adapter:8083
+      - --
+      - "/app/start-app.sh"
