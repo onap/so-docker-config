@@ -148,7 +148,7 @@ mso:
           sp-partner:
             uri: /aai/v14/business/sp-partners/sp-partner
           device:
-            uri: /aai/v13/network/devices/device
+            uri: /aai/v14/network/devices/device
         v11:
           customer:
             uri: /aai/v11/business/customers/customer
