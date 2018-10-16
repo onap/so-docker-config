@@ -61,7 +61,7 @@ mso:
       endpoint: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/SDNCAdapter
       rest:
         endpoint: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/rest/v1/sdnc
-      timeout: PT60S
+      timeout: PT60M
     tenant:
       endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/TenantAdapter
     vnf:
@@ -94,7 +94,7 @@ mso:
     customer:
       id: testCustIdInfra
   po:
-    timeout: PT60S
+    timeout: PT60M
   request:
     db:
       endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/
