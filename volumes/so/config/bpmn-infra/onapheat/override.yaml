@@ -112,6 +112,11 @@ mso:
     callback: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/rest/SDNCNotify
     endpoint: http://replaceme:28090/optimizationInstance/V1/create
     timeout: PT30M
+  oof:
+    auth: test:testpwd
+    callbackEndpoint: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
+    endpoint: http://oof.api.simpledemo.openecomp.org:8698/api/oof/v1/placement
+    timeout: PT30M
   workflow:
     CreateGenericVNFV1:
       aai:
