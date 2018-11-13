@@ -124,6 +124,16 @@ mso:
       aai:
         volume-group:
           uri: /aai/v6/cloud-infrastructure/volume-groups/volume-group
+    custom:
+        SOTNVPNInfraService:
+          resource:
+            sequence: SPPartnerVF,SOTNConnectivity
+        SDWANVPNInfraService:
+          resource:
+            sequence: SPPartnerVF,SDWANConnectivity
+        SiteService:
+          resource:
+            sequence: SPPartnerVF,deviceVF,SiteVF,sotnvpnattachmentvF,SiteWANVF,sdwanvpnattachmentVF
     default:
       aai:
         version: '14'
