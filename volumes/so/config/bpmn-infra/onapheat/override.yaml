@@ -28,6 +28,8 @@ pnf:
     topicListenerDelayInSeconds: 5
 mso:
   msoKey: 07a7159d3bf51a0e53be7a8f89699be7
+  config:
+    path: /var/csar/
   correlation:
     timeout: 60
   logPath: logs
