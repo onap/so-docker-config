@@ -228,6 +228,9 @@ mso:
       endpoint: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
     notification:
       name: GenericNotificationServiceATT
+    sdnc:
+      replication:
+        delay: PT60S
     sdncadapter:
       callback: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/SDNCAdapterCallbackService
     vnfadapter:
