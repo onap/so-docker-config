@@ -128,12 +128,18 @@ mso:
         SOTNVPNInfraService:
           resource:
             sequence: SPPartnerVF,SOTNConnectivity
+          sdnc:
+            need: true
         SDWANVPNInfraService:
           resource:
             sequence: SPPartnerVF,SDWANConnectivity
+          sdnc:
+            need: true
         SiteService:
           resource:
             sequence: SPPartnerVF,deviceVF,SiteVF,sotnvpnattachmentvF,SiteWANVF,sdwanvpnattachmentVF
+          sdnc:
+            need: true
     default:
       aai:
         version: '14'
