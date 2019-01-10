@@ -1,0 +1,387 @@
+version: '2'
+networks:
+  localnet:
+    driver: 'bridge'
+    driver_opts:
+      com.docker.network.driver.mtu: ${MTU}
+services:
+################################################################################
+  mariadb:
+    image: 'mariadb:10.1.11'
+    ports:
+      - '3306'
+    hostname: 'mariadb.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'mariadb.local.onap.org'
+    volumes:
+      - './volumes/mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d'
+      - './volumes/mariadb/conf.d:/etc/mysql/conf.d'
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=password'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+################################################################################
+  catalog-db-adapter:
+    image: 'onap/so/catalog-db-adapter'
+    ports:
+      - '8082:8082'
+    hostname: 'catalog-db-adapter.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'catalog-db-adapter.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/catalog-db-adapter/local:/app/config'
+    environment:
+      - 'APP=catalog-db-adapter'
+      - 'CONTAINER_PORT=8082'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'DB_HOST=mariadb.local.onap.org'
+      - 'DB_PORT=3306'
+      - 'DB_USERNAME=so_user'
+      - 'DB_PASSWORD=so_User123'
+      - 'DB_ADMIN_USERNAME=so_admin'
+      - 'DB_ADMIN_PASSWORD=so_Admin123'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'mariadb.local.onap.org:3306'
+      - '--'
+      - '/app/start-app.sh'
+################################################################################
+  request-db-adapter:
+    image: 'onap/so/request-db-adapter'
+    ports:
+      - '8083:8083'
+    hostname: 'request-db-adapter.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'request-db-adapter.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/request-db-adapter/local:/app/config'
+    environment:
+      - 'APP=request-db-adapter'
+      - 'CONTAINER_PORT=8083'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'DB_HOST=mariadb.local.onap.org'
+      - 'DB_PORT=3306'
+      - 'DB_USERNAME=so_user'
+      - 'DB_PASSWORD=so_User123'
+      - 'DB_ADMIN_USERNAME=so_admin'
+      - 'DB_ADMIN_PASSWORD=so_Admin123'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+      - 'catalog-db-adapter'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'catalog-db-adapter.local.onap.org:8082'
+      - '--'
+      - '/app/start-app.sh'
+################################################################################
+  sdnc-adapter:
+    image: 'onap/so/sdnc-adapter'
+    ports:
+      - '8086:8086'
+    hostname: 'sdnc-adapter.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'sdnc-adapter.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/sdnc-adapter/local:/app/config'
+    environment:
+      - 'APP=sdnc-adapter'
+      - 'CONTAINER_PORT=8086'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+      - 'catalog-db-adapter'
+      - 'request-db-adapter'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'request-db-adapter.local.onap.org:8083'
+      - '--'
+      - '/app/start-app.sh'
+################################################################################
+  openstack-adapter:
+    image: 'onap/so/openstack-adapter'
+    ports:
+      - '8087:8087'
+    hostname: 'openstack-adapter.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'openstack-adapter.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/openstack-adapter/local:/app/config'
+    environment:
+      - 'APP=openstack-adapter'
+      - 'CONTAINER_PORT=8087'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'OPEN_STACK_ENCRYPTED_PASSWORD_HERE=c124921a3a0efbe579782cde8227681e'
+      - 'OPEN_STACK_KEY_STONE_URL=http://1.2.3.4:5000'
+      - 'OPEN_STACK_REGION=RegionOne'
+      - 'OPEN_STACK_SERVICE_TENANT_NAME=service'
+      - 'OPEN_STACK_USER_NAME=vnf_user'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'DB_HOST=mariadb.local.onap.org'
+      - 'DB_PORT=3306'
+      - 'DB_USERNAME=so_user'
+      - 'DB_PASSWORD=so_User123'
+      - 'DB_ADMIN_USERNAME=so_admin'
+      - 'DB_ADMIN_PASSWORD=so_Admin123'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+      - 'catalog-db-adapter'
+      - 'request-db-adapter'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'request-db-adapter.local.onap.org:8083'
+      - '--'
+      - '/app/start-app.sh'
+################################################################################
+  vfc-adapter:
+    image: 'onap/so/vfc-adapter'
+    ports:
+      - '8084:8084'
+    hostname: 'vfc-adapter.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'vfc-adapter.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/vfc-adapter/local:/app/config'
+    environment:
+      - 'APP=vfc-adapter'
+      - 'CONTAINER_PORT=8084'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'DB_HOST=mariadb.local.onap.org'
+      - 'DB_PORT=3306'
+      - 'DB_USERNAME=so_user'
+      - 'DB_PASSWORD=so_User123'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+      - 'catalog-db-adapter'
+      - 'request-db-adapter'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'request-db-adapter.local.onap.org:8083'
+      - '--'
+      - '/app/start-app.sh'
+################################################################################
+  sdc-controller:
+    image: 'onap/so/sdc-controller'
+    ports:
+      - '8085:8085'
+    hostname: 'sdc-controller.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'sdc-controller.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/sdc-controller/local:/app/config'
+    environment:
+      - 'APP=sdc-controller'
+      - 'CONTAINER_PORT=8085'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'DB_HOST=mariadb.local.onap.org'
+      - 'DB_PORT=3306'
+      - 'DB_USERNAME=so_user'
+      - 'DB_PASSWORD=so_User123'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+      - 'catalog-db-adapter'
+      - 'request-db-adapter'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'request-db-adapter.local.onap.org:8083'
+      - '--'
+      - '/app/start-app.sh'
+################################################################################
+  bpmn-infra:
+    image: 'onap/so/bpmn-infra'
+    ports:
+      - '8081:8081'
+    hostname: 'bpmn-infra.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'bpmn-infra.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/bpmn-infra/local:/app/config'
+    environment:
+      - 'APP=bpmn-infra'
+      - 'CONTAINER_PORT=8081'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'DB_HOST=mariadb.local.onap.org'
+      - 'DB_PORT=3306'
+      - 'DB_USERNAME=so_user'
+      - 'DB_PASSWORD=so_User123'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+      - 'catalog-db-adapter'
+      - 'request-db-adapter'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'request-db-adapter.local.onap.org:8083'
+      - '--'
+      - '/app/start-app.sh'
+################################################################################
+  api-handler-infra:
+    image: 'onap/so/api-handler-infra'
+    ports:
+      - '8080:8080'
+    hostname: 'api-handler-infra.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'api-handler-infra.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/api-handler-infra/local:/app/config'
+    environment:
+      - 'APP=api-handler-infra'
+      - 'CONTAINER_PORT=8080'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'DB_HOST=mariadb.local.onap.org'
+      - 'DB_PORT=3306'
+      - 'DB_USERNAME=so_user'
+      - 'DB_PASSWORD=so_User123'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+      - 'catalog-db-adapter'
+      - 'request-db-adapter'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'request-db-adapter.local.onap.org:8083'
+      - '--'
+      - '/app/start-app.sh'
+################################################################################
+  so-monitoring:
+    image: 'onap/so/so-monitoring'
+    ports:
+      - '8088:8088'
+    hostname: 'so-monitoring.local.onap.org'
+    networks:
+      localnet:
+        aliases:
+          - 'so-monitoring.local.onap.org'
+    volumes:
+      - './volumes/so/ca-certificates/local:/app/ca-certificates'
+      - './volumes/so/config/so-monitoring/local:/app/config'
+    environment:
+      - 'APP=so-monitoring'
+      - 'CONTAINER_PORT=8088'
+      - 'COMMON_NAMESPACE=local.onap.org'
+      - 'JVM_ARGS=-Xms64m -Xmx512m'
+      - 'EXIT_DELAY=1800'
+    depends_on:
+      - 'mariadb'
+      - 'catalog-db-adapter'
+      - 'request-db-adapter'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '30m'
+        max-file: '5'
+    command:
+      - '/app/wait-for.sh'
+      - '-q'
+      - '-t'
+      - '300'
+      - 'request-db-adapter.local.onap.org:8083'
+      - '--'
+      - '/app/start-app.sh'
