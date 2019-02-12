@@ -56,6 +56,7 @@ mso:
         username: testuser
         password: VjR5NDcxSzA=
         host: http://c1.vm1.mso.simpledemo.onap.org:28090
+        auth: 51EA5414022D7BE536E7516C4D1A6361416921849B72C0D6FC1C7F262FD9F2BBC2AD124190A332D9845A188AD80955567A4F975C84C221EEA8243BFD92FFE6896CDD1EA16ADD34E1E3D47D4A
       publisher:
         topic: com.att.ecomp.mso.operationalEnvironmentEvent
 
