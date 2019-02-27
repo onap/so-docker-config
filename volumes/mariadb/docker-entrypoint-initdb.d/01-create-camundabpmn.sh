@@ -32,6 +32,3 @@ GRANT ALL on camundabpmn.* to 'camundauser' identified by 'camunda123' with GRAN
 FLUSH PRIVILEGES;
 EOF
 
-cd /docker-entrypoint-initdb.d/db-sql-scripts/camunda || exit 1
-mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_engine_7.8.0-ee.sql || exit 1
-mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_create_camunda_admin.sql || exit 1
