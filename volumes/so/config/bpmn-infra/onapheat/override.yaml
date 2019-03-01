@@ -14,6 +14,9 @@ camunda:
     job-execution:
       max-pool-size: 30
       core-pool-size: 3
+cds:
+    endpoint: blueprints-processor
+    port: 9111
 entitymanager:
   packagesToScan: com
 pnf:
