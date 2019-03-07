@@ -32,3 +32,6 @@ GRANT ALL on camundabpmn.* to 'camundauser' identified by 'camunda123' with GRAN
 FLUSH PRIVILEGES;
 EOF
 
+mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_engine_7.10.0.sql || exit 1
+mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_identity_7.10.0.sql || exit 1
+
