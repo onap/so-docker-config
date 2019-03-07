@@ -17,6 +17,7 @@ camunda:
 cds:
     endpoint: blueprints-processor
     port: 9111
+    auth: Basic Y2NzZGthcHBzOmNjc2RrYXBwcw==
 entitymanager:
   packagesToScan: com
 pnf:
