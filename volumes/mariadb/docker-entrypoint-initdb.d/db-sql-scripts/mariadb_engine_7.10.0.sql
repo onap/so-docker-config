@@ -14,6 +14,8 @@
 -- limitations under the License.
 --
 
+use camundabpmn;
+
 create table ACT_GE_PROPERTY (
     NAME_ varchar(64),
     VALUE_ varchar(300),

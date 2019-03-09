@@ -14,6 +14,8 @@
 -- limitations under the License.
 --
 
+use camundabpmn;
+
 create table ACT_ID_GROUP (
     ID_ varchar(64),
     REV_ integer,

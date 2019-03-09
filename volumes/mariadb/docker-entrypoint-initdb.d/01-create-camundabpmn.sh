@@ -26,11 +26,14 @@ echo "Creating camundabpmn database . . ."
 mysql -uroot -p$MYSQL_ROOT_PASSWORD << 'EOF' || exit 1
 DROP DATABASE IF EXISTS `camundabpmn`;
 CREATE DATABASE `camundabpmn`;
+DROP USER 'camundauser';
 DELETE FROM mysql.user WHERE User='camundauser';
 CREATE USER 'camundauser';
 GRANT ALL on camundabpmn.* to 'camundauser' identified by 'camunda123' with GRANT OPTION;
 FLUSH PRIVILEGES;
 EOF
+
+cd /docker-entrypoint-initdb.d/db-sql-scripts
 
 mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_engine_7.10.0.sql || exit 1
 mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_identity_7.10.0.sql || exit 1
