@@ -27,6 +27,7 @@ mysql -uroot -p$MYSQL_ROOT_PASSWORD << 'EOF' || exit 1
 DROP DATABASE IF EXISTS `camundabpmn`;
 CREATE DATABASE `camundabpmn`;
 DELETE FROM mysql.user WHERE User='camundauser';
+DROP USER 'camundauser';
 CREATE USER 'camundauser';
 GRANT ALL on camundabpmn.* to 'camundauser' identified by 'camunda123' with GRANT OPTION;
 FLUSH PRIVILEGES;
