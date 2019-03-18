@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7bbe078_59a5f396",
+        "filename": "volumes/so/config/bpmn-infra/onapheat/override.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5279
+      },
+      "writtenOn": "2019-03-18T10:16:07Z",
+      "side": 1,
+      "message": "Can we have a higher default? 5-10 min was mentioned in previous meeting.",
+      "revId": "cb087952325d01a5cc1351d5326b26417c0b445a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
