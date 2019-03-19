@@ -21,14 +21,16 @@
 # and service marks of AT&T Intellectual Property.
 #
 
-echo "Creating requestdb database . . ."
+echo "Creating requestdb database . . ." 1>/tmp/mariadb-requestdb.log 2>&1
 
 mysql -uroot -p$MYSQL_ROOT_PASSWORD << 'EOF' || exit 1
 DROP DATABASE IF EXISTS `requestdb`;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `requestdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 DELETE FROM mysql.user WHERE User='requestuser';
-DROP USER 'requestuser';
+DROP USER IF EXISTS 'requestuser';
 CREATE USER 'requestuser';
 GRANT ALL on requestdb.* to 'requestuser' identified by 'request123' with GRANT OPTION;
 FLUSH PRIVILEGES;
 EOF
+
+echo "Created requestdb database . . ." 1>>/tmp/mariadb-requestdb.log 2>&1
