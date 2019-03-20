@@ -21,10 +21,11 @@
 # and service marks of AT&T Intellectual Property.
 #
 
-echo "Creating so admin user . . ."
+echo "Creating so admin user . . ." 1>/tmp/mariadb-so-admin.log 2>&1
 
 mysql -uroot -p$MYSQL_ROOT_PASSWORD << 'EOF' || exit 1
 DELETE FROM mysql.user WHERE User='so_admin';
+DROP USER IF EXISTS 'so_admin';
 CREATE USER 'so_admin';
 GRANT USAGE ON *.* TO 'so_admin'@'%' IDENTIFIED BY 'so_Admin123';
 GRANT ALL PRIVILEGES ON `camundabpmn`.* TO 'so_admin'@'%' WITH GRANT OPTION;
@@ -32,3 +33,5 @@ GRANT ALL PRIVILEGES ON `requestdb`.* TO 'so_admin'@'%' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON `catalogdb`.* TO 'so_admin'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 EOF
+
+echo "Created so admin user . . ." 1>>/tmp/mariadb-so-admin.log 2>&1

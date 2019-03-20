@@ -21,13 +21,13 @@
 # and service marks of AT&T Intellectual Property.
 #
 
-echo "Creating camundabpmn database . . ."
+echo "Creating camundabpmn database . . ." 1>/tmp/mariadb-camundabpmn.log 2>&1
 
-mysql -uroot -p$MYSQL_ROOT_PASSWORD << 'EOF' || exit 1
+mysql -uroot -p$MYSQL_ROOT_PASSWORD << 'EOF' || exit 1 
 DROP DATABASE IF EXISTS `camundabpmn`;
 CREATE DATABASE `camundabpmn`;
 DELETE FROM mysql.user WHERE User='camundauser';
-DROP USER 'camundauser';
+DROP USER IF EXISTS 'camundauser';
 CREATE USER 'camundauser';
 GRANT ALL on camundabpmn.* to 'camundauser' identified by 'camunda123' with GRANT OPTION;
 FLUSH PRIVILEGES;
@@ -38,3 +38,4 @@ cd /docker-entrypoint-initdb.d/db-sql-scripts
 mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_engine_7.10.0.sql || exit 1
 mysql -uroot -p$MYSQL_ROOT_PASSWORD -f < mariadb_identity_7.10.0.sql || exit 1
 
+echo "Created camundabpmn database . . ." 1>>/tmp/mariadb-camundabpmn.log 2>&1
