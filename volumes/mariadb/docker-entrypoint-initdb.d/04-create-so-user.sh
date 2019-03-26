@@ -25,7 +25,6 @@ echo "Creating so user . . ." 1>/tmp/mariadb-so-user.log 2>&1
 
 mysql -uroot -p$MYSQL_ROOT_PASSWORD << 'EOF' || exit 1
 DELETE FROM mysql.user WHERE User='so_user';
-DROP USER IF EXISTS 'so_user';
 CREATE USER 'so_user';
 GRANT USAGE ON *.* TO 'so_user'@'%' IDENTIFIED BY 'so_User123';
 GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, SHOW VIEW ON `requestdb`.* TO 'so_user'@'%';
