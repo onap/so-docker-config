@@ -50,6 +50,8 @@ mso:
   aai:
     endpoint: https://aai.api.simpledemo.onap.org:8443
     auth: 2630606608347B7124C244AB0FE34F6F
+  extApi:
+    endpoint: http://nbi.onap:8080/nbi/api/v3
   so:
     operational-environment:
       dmaap:
