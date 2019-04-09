@@ -12,6 +12,16 @@ spring:
       max-total: 20
       validation-query: select 1
       test-on-borrow: true
+  security:
+     usercredentials:
+     -
+      username: bpel
+      password: '$2a$12$1xyutEZNfjGewIZRfKaE8eZE99f5sYFUmmM80BobI65KNjmcK0JuO'
+      role: BPEL-Client
+     -
+      username: mso_admin
+      password: '$2a$12$tidKuu.h88E2nuL95pTVY.ZOYMN/1dp29A9b1o.0GFDsVVSYlMkHa'
+      role: ACTUATOR
 
 server:
     port: 8084
