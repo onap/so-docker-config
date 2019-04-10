@@ -99,6 +99,15 @@ mso:
     core-pool-size: 50
     max-pool-size: 50
     queue-capacity: 500
+  auth: 6B466C603A260F3655DBF91E53CE54667041C01406D10E8CAF9CC24D8FA5388D06F90BFE4C852052B436
+  config:
+    cadi:
+      aafId: test
+  workflow:
+    endpoint: http://bpmn-infra:8081/sobpmnengine
+    topics:
+      retryMultiplier: 1000
+  msoKey: 07a7159d3bf51a0e53be7a8f89699be7
 
 cloud_config:
   identity_services:
