@@ -74,6 +74,8 @@ mso:
       messageBusAddress: vm1.mr.simpledemo.onap.org,vm1.mr.simpledemo.onap.org
   asdc:
     config:
+      activity:
+        endpoint: http://sdc-wfd-be:8080
       key: 566B754875657232314F5548556D3665
       components:
         count: 3,
