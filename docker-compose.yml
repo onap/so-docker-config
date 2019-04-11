@@ -34,6 +34,11 @@ services:
       - APP=catalog-db-adapter
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DB_PORT=3306
+      - DB_ADMIN_USERNAME=root
+      - DB_ADMIN_PASSWORD=password
 #     - KEYSTORE=msoClientKeyStore-onapheat.jks
 #     - KEYSTORE_PASSWORD=password
 #     - TRUSTSTORE=msoTrustStore.jks
@@ -67,6 +72,11 @@ services:
       - APP=request-db-adapter
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DB_PORT=3306
+      - DB_ADMIN_USERNAME=root
+      - DB_ADMIN_PASSWORD=password
 #     - KEYSTORE=msoClientKeyStore-onapheat.jks
 #     - KEYSTORE_PASSWORD=password
 #     - TRUSTSTORE=msoTrustStore.jks
