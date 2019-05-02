@@ -10,7 +10,7 @@ mso:
     catalog:
         db:
           spring:
-            endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+            endpoint: http://catalog-db-adapter:8082
     db:
       auth: Basic YnBlbDpwYXNzd29yZDEk
     site-name: onapheat
@@ -112,13 +112,20 @@ org:
                         bpelurl: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
                     sdncauth: 263f7d5f944d4d0c76db74b4148bec67d0bc796a874bc0d2a2a12aae89a866aa69133f700f391f784719a37f6a68d29bf5a2fbae1dab0402db7788c800c5ba73
                     sdncconnecttime: 5000
-                    sdncurl10: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/GENERIC-RESOURCE-API:'
-                    sdncurl11: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/VNFTOPOLOGYAIC-API:'
-                    sdncurl12: http://c1.vm1.sdnc.simpledemo.onap.org:8282/
-                    sdncurl5: http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/config
-                    sdncurl6: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/VNF-API:'
-                    sdncurl8: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/NBNC-API:'
-                    sdncurl9: http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/NORTHBOUND-API:service-topology-operation
+                            sdncurl10: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/GENERIC-RESOURCE-API:'
+                            sdncurl11: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/VNFTOPOLOGYAIC-API:'
+                            sdncurl12: http://c1.vm1.sdnc.simpledemo.onap.org:8282/
+                            sdncurl5: http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/config
+                            sdncurl6: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/VNF-API:'
+                            sdncurl8: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/NBNC-API:'
+                            sdncurl9: http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/NORTHBOUND-API:service-topology-operation
+	                    #sdncurl10: 'http://sdncsim:8090/restconf/operations/GENERIC-RESOURCE-API:'
+	                    #sdncurl11: 'http://sdncsim:8090/restconf/operations/VNFTOPOLOGYAIC-API:'
+	                    #sdncurl12: http://sdncsim:8090/
+	                    #sdncurl5: http://sdncsim:8090/restconf/config
+	                    #sdncurl6: 'http://sdncsim:8090/restconf/operations/VNF-API:'
+	                    #sdncurl8: 'http://sdncsim:8090/restconf/operations/NBNC-API:'
+	                    #sdncurl9: http://sdncsim:8090/restconf/operations/NORTHBOUND-API:service-topology-operation
                     service:
                         infra:
                             service-topology-infra-activate-operation: POST|90000|sdncurl9|sdnc-request-header|com:att:sdnctl:northbound-api:v1

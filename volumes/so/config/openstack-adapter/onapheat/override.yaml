@@ -91,7 +91,8 @@ mso:
   catalog:
     db:
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+#        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+         endpoint: http://catalog-db-adapter:8082
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
   site-name: localDevEnv
