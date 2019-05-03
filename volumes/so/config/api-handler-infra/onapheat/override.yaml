@@ -18,7 +18,7 @@ mso:
         endpoint: "http://catalog-db-adapter:8082"
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
-  config:
+  config:  
     path: /src/main/resources/
   infra:
     default:
@@ -31,7 +31,7 @@ mso:
           default:
             testApi: GR_API
   camundaURL: http://bpmn-infra:8081
-  camundaAuth: 1D9003AB8BAFFA0D2104B67FA89040AD70B5B495B2A5DF931DE236484EBC1681
+  camundaAuth: AE2E9BE6EF9249085AF98689C4EE087736A5500629A72F35068FFB88813A023581DD6E765071F1C04075B36EA4213A
   async:
     core-pool-size: 50
     max-pool-size: 50
@@ -121,4 +121,12 @@ request:
       max-total: 20
       validation-query: select 1
       test-on-borrow: true
+org:
+  onap:
+    so:
+      cloud-owner: onap
+      adapters:
+        network:
+          encryptionKey: 07a7159d3bf51a0e53be7a8f89699be7
+
 

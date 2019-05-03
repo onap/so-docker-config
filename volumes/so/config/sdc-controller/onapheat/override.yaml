@@ -45,8 +45,7 @@ mso:
   catalog:
     db:
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
-  camundaURL: http://bpmn-infra:8081/
+        endpoint: http://catalog-db-adapter:8082
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
   site-name: onapheat
@@ -55,7 +54,7 @@ mso:
       endpoint: http://request-db-adapter:8083
       auth: Basic YnBlbDpwYXNzd29yZDEk
   aai:
-    endpoint: https://aai.api.simpledemo.onap.org:8443
+     endpoint: https://aai.api.simpledemo.onap.org:8443
   asdc-connections:
     asdc-controller1:
       user: mso
@@ -75,8 +74,6 @@ mso:
       messageBusAddress: vm1.mr.simpledemo.onap.org,vm1.mr.simpledemo.onap.org
   asdc:
     config:
-      activity:
-        endpoint: http://sdc-wfd-be:8080
       key: 566B754875657232314F5548556D3665
       components:
         count: 3,
