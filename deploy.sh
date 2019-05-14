@@ -7,12 +7,12 @@
 #     | sets the docker host to be used if not local unix socket
 #
 # env MSO_CONFIG_UPDATES (optional)
-#     | json structure that matches volumes/mso/chef-config/mso-docker.json
+#     | json structure that matches so/chef-repo/environments/mso-docker.json
 #     | elements whose value needs to be updated before the deployment
 #     | phase.
 #
 # env MSO_DOCKER_IMAGE_VERSION
-#     | json structure that matches volumes/mso/chef-config/mso-docker.json
+#     | json structure that matches so/chef-repo/environments/mso-docker.json
 #     | elements whose value needs to be updated before the deployment
 #     | phase.
 ################################### Functions definition ################################
