@@ -9,7 +9,7 @@ mso:
   catalog:
     db:
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+        endpoint: http://catalog-db-adapter:8082
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
 spring:
@@ -43,6 +43,10 @@ spring:
       username: mso_admin
       password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: ACTUATOR
+    -
+      username: apihBpmn                                                                                                                                              
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'                                                                                        
+      role: BPMN-Client 
 
 #Actuator
 management:
