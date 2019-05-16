@@ -10,7 +10,7 @@ mso:
     catalog:
         db:
           spring:
-            endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+            endpoint: http://catalog-db-adapter:8082
     db:
       auth: Basic YnBlbDpwYXNzd29yZDEk
     site-name: onapheat
@@ -71,8 +71,8 @@ org:
                             changedelete: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
                             delete: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
                             rollback: POST|270000|sdncurl6|sdnc-request-header|org:onap:sdnctl:vnf
-                    bpelauth: 023A0244AB819A0DE0131DBC3AC5FAB4D8544E1CB1A7FE3CE60F6E3292AC0D93
-                    bpelurl: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/SDNCAdapterCallbackService
+                    bpelauth: 4C18603C5AE7E3A42A6CED95CDF9C0BA9B2109B3725747662E5D34E5FDF63DA9ADEBB08185098F14699195FDE9475100
+                    bpelurl: http://bpmn-infra:8081/mso/SDNCAdapterCallbackService
                     generic-resource:
                         network-topology-operation:
                             create: POST|270000|sdncurl10|sdnc-request-header|org:onap:sdnc:northbound:generic-resource
@@ -107,10 +107,10 @@ org:
                     mobility:
                         '':
                             query: GET|60000|sdncurl5|
-                    myurl: http://c1.vm1.mso.simpledemo.onap.org:8081/adapters/rest/SDNCNotify
+                    myurl: http://bpmn-infra:8081/adapters/rest/SDNCNotify
                     rest:
-                        bpelurl: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
-                    sdncauth: 263f7d5f944d4d0c76db74b4148bec67d0bc796a874bc0d2a2a12aae89a866aa69133f700f391f784719a37f6a68d29bf5a2fbae1dab0402db7788c800c5ba73
+                        bpelurl: http://bpmn-infra:8081/mso/WorkflowMessage
+                    sdncauth: ED07A7EE5F099FA53369C3DF2240AD68A00154676EEDBC6F8C16BAA83B1912941B8941ABD48683D2C1072DA7040659692DE936A59BBF42A038CF71DE67B4A375190071EC76EA657801B033C135
                     sdncconnecttime: 5000
                     sdncurl10: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/GENERIC-RESOURCE-API:'
                     sdncurl11: 'http://c1.vm1.sdnc.simpledemo.onap.org:8282/restconf/operations/VNFTOPOLOGYAIC-API:'
@@ -128,6 +128,8 @@ org:
                     vfmodule:
                         '':
                             query: GET|60000|sdncurl12|
+                network:
+                    encryptionKey: 07a7159d3bf51a0e53be7a8f89699be7
 
 spring:
   security:
@@ -156,3 +158,7 @@ spring:
       username: mso_admin
       password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: ACTUATOR
+    -
+      username: apihBpmn
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+      role: BPMN-Client

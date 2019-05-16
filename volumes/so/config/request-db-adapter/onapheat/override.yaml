@@ -43,6 +43,10 @@ spring:
       username: mso_admin
       password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: ACTUATOR
+    -                                                     
+      username: apihBpmn                                                                                                 
+      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'                                         
+      role: BPMN-Client
 
 #Actuator
 management:

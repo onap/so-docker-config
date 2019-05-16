@@ -1,8 +1,9 @@
+bpelURL: http://bpmn-infra.so.testlab.onap.org:8081
 aai:
-  auth: 2630606608347B7124C244AB0FE34F6F
+  auth: 6E081E10B1CA43A843E303733A74D9B23B601A6E22A21C7EF2C7F15A42F81A1A4E85E65268C2661F71321052C7F3E55B96A8E1E951F8BF6F
   dme2:
     timeout: '30000'
-  endpoint: https://aai.api.simpledemo.onap.org:8443
+  endpoint: http://aai.api.simpledemo.onap.org:30233
   workflowAaiDistributionDelay: PT30S
   pnfEntryNotificationTimeout: P14D
 camunda:
@@ -44,42 +45,42 @@ mso:
     queue-capacity: 500
   adapters:
     completemsoprocess:
-      endpoint:  http://c1.vm1.mso.simpledemo.onap.org:8081/CompleteMsoProcess
+      endpoint:  http://bpmn-infra:8081/CompleteMsoProcess
     requestDb:
       endpoint: http://request-db-adapter:8083
       auth: Basic YnBlbDpwYXNzd29yZDEk
     db:
-      auth: 33293332AEC4930F655D8E2E8BB08937
+      auth: AE2E9BE6EF9249085AF98689C4EE087736A5500629A72F35068FFB88813A023581DD6E765071F1C04075B36EA4213A
       password: wLg4sjrAFUS8rfVfdvTXeQ==
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/services/RequestsDbAdapter
+      endpoint: http://request-db-adapter:8083/services/RequestsDbAdapter
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083
+        endpoint: http://request-db-adapter:8083
     network:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/NetworkAdapter
+      endpoint: http://openstack-adapter:8087/services/NetworkAdapter
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/v1/networks
+        endpoint: http://openstack-adapter:8087/services/rest/v1/networks
     openecomp:
       db:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/services/RequestsDbAdapter
+        endpoint: http://request-db-adapter:8083/services/RequestsDbAdapter
     po:
-      auth: 33293332AEC4930F655D8E2E8BB08937
+      auth: AE2E9BE6EF9249085AF98689C4EE087736A5500629A72F35068FFB88813A023581DD6E765071F1C04075B36EA4213A
       password: B8EBDE0311F0AF355CF3F2FD505A8CAD
     sdnc:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/SDNCAdapter
+      endpoint: http://sdnc-adapter:8086/adapters/SDNCAdapter
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/rest/v1/sdnc
+        endpoint: http://sdnc-adapter:8086/adapters/rest/v1/sdnc
       timeout: PT60M
     tenant:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/TenantAdapter
+      endpoint: http://openstack-adapter:8087/services/TenantAdapter
     vnf:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/VnfAdapter
+      endpoint: http://openstack-adapter:8087/services/VnfAdapter
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/v1/vnfs
+        endpoint: http://openstack-adapter:8087/services/rest/v1/vnfs
     volume-groups:
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/v1/volume-groups
+        endpoint: http://openstack-adapter:8087/services/rest/v1/volume-groups
     vnf-async:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/VnfAdapterAsync
+      endpoint: http://openstack-adapter:8087/services/VnfAdapterAsync
   bpmn:
     process:
       historyTimeToLive: '30'
@@ -88,7 +89,7 @@ mso:
     db:
       endpoint: http://catalog-db-adapter:8082/ecomp/mso/catalog
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+        endpoint: http://catalog-db-adapter:8082
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
   default:
@@ -104,7 +105,7 @@ mso:
     timeout: PT60M
   request:
     db:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/
+      endpoint: http://request-db-adapter:8083/
   rollback: 'true'
   sdnc:
     password: 3141634BF7E070AA289CF2892C986C0B
@@ -116,12 +117,12 @@ mso:
   site-name: CamundaEngine
   sniro:
     auth: test:testpwd
-    callback: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/rest/SDNCNotify
+    callback: http://sdnc-adapter:8086/adapters/rest/SDNCNotify
     endpoint: http://replaceme:28090/optimizationInstance/V1/create
     timeout: PT30M
   oof:
     auth: test:testpwd
-    callbackEndpoint: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
+    callbackEndpoint: http://bpmn-infra:8081/mso/WorkflowMessage
     endpoint: http://oof.api.simpledemo.openecomp.org:8698/api/oof/v1/placement
     timeout: PT30M
   workflow:
@@ -220,20 +221,20 @@ mso:
           namespace: http://org.onap.aai.inventory/
           version: 14
     message:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
+      endpoint: http://bpmn-infra:8081/mso/WorkflowMessage
     notification:
       name: GenericNotificationServiceATT
     sdncadapter:
-      callback: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/SDNCAdapterCallbackService
+      callback: http://bpmn-infra:8081/mso/SDNCAdapterCallbackService
     vnfadapter:
       create:
-        callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
+        callback: http://openstack-adapter:8087/mso/vnfAdapterNotify
       delete:
-        callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
+        callback: http://openstack-adapter:8087/mso/vnfAdapterNotify
       query:
-        callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
+        callback: http://openstack-adapter:8087/mso/vnfAdapterNotify
       rollback:
-        callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
+        callback: http://openstack-adapter:8087/mso/vnfAdapterNotify
   global:
     dmaap:
       username: testuser
