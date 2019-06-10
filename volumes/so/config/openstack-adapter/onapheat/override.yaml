@@ -48,7 +48,7 @@ org:
         default_keystone_url_version: /v2.0
         default_keystone_reg_ex: "/[vV][0-9]"
         vnf:
-          bpelauth: A7FC9B308B7AF7A269072BA729A345625E0381E3071DE7EE50603677CB69C515
+          bpelauth: D1A67FA93B6A6419132D0F83CC771AF774FD3C60853C50C22C8C6FC5088CC79E9E81EDE9EA39F22B2F66A0068E
           checkRequiredParameters: true
           addGetFilesOnVolumeReq: false
           sockettimeout: 30
@@ -59,12 +59,13 @@ org:
           valet_enabled: false
           fail_requests_on_valet_failure: false
         network:
-          bpelauth: A7FC9B308B7AF7A269072BA729A345625E0381E3071DE7EE50603677CB69C515
+          bpelauth: D1A67FA93B6A6419132D0F83CC771AF774FD3C60853C50C22C8C6FC5088CC79E9E81EDE9EA39F22B2F66A0068E
           sockettimeout: 5
           connecttimeout: 5
           retrycount: 5
           retryinterval: -15
           retrylist: 408,429,500,502,503,504,900
+          encryptionKey: 07a7159d3bf51a0e53be7a8f89699be7
         tenant:
           default_keystone_url_version: /v2.0
           default_keystone_reg_ex: "/[vV][0-9]"
@@ -87,11 +88,13 @@ ecomp:
         pollInterval: 15
 
 mso:
+  auth: BEA8637716A7EB617DF472BA6552D22F68C1CB17B0D094D77DDA562F4ADAAC4457CAB848E1A4
+  msoKey: 07a7159d3bf51a0e53be7a8f89699be7
   logPath: ./logs/openstack
   catalog:
     db:
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+        endpoint: http://catalog-db-adapter:8082
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
   site-name: localDevEnv

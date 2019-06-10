@@ -1,8 +1,8 @@
 aai:
-  auth: 2630606608347B7124C244AB0FE34F6F
+  auth: 221187EFA3AD4E33600DE0488F287099934CE65C3D0697BCECC00BB58E784E07CD74A24581DC31DBC086FF63DF116378776E9BE3D1325885
   dme2:
     timeout: '30000'
-  endpoint: https://aai.api.simpledemo.onap.org:8443
+  endpoint: http://aai.api.simpledemo.onap.org:8443
   workflowAaiDistributionDelay: PT30S
   pnfEntryNotificationTimeout: P14D
 camunda:
@@ -31,6 +31,7 @@ pnf:
     consumerGroup: consumerGroup
     consumerId: consumerId
     topicListenerDelayInSeconds: 5
+bpelURL: http://bpmn-infra.so.testlab.onap.org:8081
 mso:
   msoKey: 07a7159d3bf51a0e53be7a8f89699be7
   config:
@@ -44,42 +45,47 @@ mso:
     queue-capacity: 500
   adapters:
     completemsoprocess:
-      endpoint:  http://c1.vm1.mso.simpledemo.onap.org:8081/CompleteMsoProcess
+      endpoint:  http://bpmn-infra:8081/CompleteMsoProcess
     requestDb:
       endpoint: http://request-db-adapter:8083
       auth: Basic YnBlbDpwYXNzd29yZDEk
     db:
-      auth: 33293332AEC4930F655D8E2E8BB08937
+      auth: A3745B5DBE165EFCF101D85A6FC81C211AB8BF604F8861B6C413D5DC90F8F30E0139DE44B8A342F4EF70AF
       password: wLg4sjrAFUS8rfVfdvTXeQ==
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/services/RequestsDbAdapter
+      endpoint: http://request-db-adapter:8083/services/RequestsDbAdapter
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083
+        endpoint: http://request-db-adapter:8083
     network:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/NetworkAdapter
+      endpoint: http://openstack-adapter:8087/services/NetworkAdapter
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/v1/networks
+        endpoint: http://openstack-adapter:8087/services/rest/v1/networks
     openecomp:
       db:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/services/RequestsDbAdapter
+        endpoint: http://request-db-adapter:8083/services/RequestsDbAdapter
     po:
-      auth: 33293332AEC4930F655D8E2E8BB08937
-      password: B8EBDE0311F0AF355CF3F2FD505A8CAD
+      auth: A3745B5DBE165EFCF101D85A6FC81C211AB8BF604F8861B6C413D5DC90F8F30E0139DE44B8A342F4EF70AF
     sdnc:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/SDNCAdapter
+      endpoint: http://sdnc-adapter:8086/adapters/SDNCAdapter
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/rest/v1/sdnc
+        endpoint: http://sdnc-adapter:8086/adapters/rest/v1/sdnc
       timeout: PT60M
     tenant:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/TenantAdapter
+      endpoint: http://openstack-adapter:8087/services/TenantAdapter
     vnf:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/VnfAdapter
+      endpoint: http://openstack-adapter:8087/services/VnfAdapter
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/v1/vnfs
+        endpoint: http://openstack-adapter:8087/services/rest/v1/vnfs
     volume-groups:
       rest:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/rest/v1/volume-groups
+        endpoint: http://openstack-adapter:8087/services/rest/v1/volume-groups
     vnf-async:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8087/services/VnfAdapterAsync
+      endpoint: http://openstack-adapter:8087/services/VnfAdapterAsync
+    vfc:
+      rest:
+        endpoint: http://vfc-adapter:8084/services/v1/vfcadapter
+    workflow:
+      message:
+        endpoint: http://bpmn-infra:8081/mso/WorkflowMessage
   bpmn:
     process:
       historyTimeToLive: '30'
@@ -88,7 +94,7 @@ mso:
     db:
       endpoint: http://catalog-db-adapter:8082/ecomp/mso/catalog
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+        endpoint: http://catalog-db-adapter:8082
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
   default:
@@ -104,10 +110,10 @@ mso:
     timeout: PT60M
   request:
     db:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8083/
+      endpoint: http://request-db-adapter:8083/
   rollback: 'true'
   sdnc:
-    password: 3141634BF7E070AA289CF2892C986C0B
+    password: 1D78CFC35382B6938A989066A7A7EAEF4FE933D2919BABA99EB4763737F39876C333EE5F
   service:
     agnostic:
       sniro:
@@ -116,12 +122,12 @@ mso:
   site-name: CamundaEngine
   sniro:
     auth: test:testpwd
-    callback: http://c1.vm1.mso.simpledemo.onap.org:8086/adapters/rest/SDNCNotify
+    callback: http://sdnc-adapter:8086/adapters/rest/SDNCNotify
     endpoint: http://replaceme:28090/optimizationInstance/V1/create
     timeout: PT30M
   oof:
     auth: test:testpwd
-    callbackEndpoint: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
+    callbackEndpoint: http://bpmn-infra:8081/mso/WorkflowMessage
     endpoint: http://oof.api.simpledemo.openecomp.org:8698/api/oof/v1/placement
     timeout: PT30M
   workflow:
@@ -220,20 +226,23 @@ mso:
           namespace: http://org.onap.aai.inventory/
           version: 14
     message:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
+      endpoint: http://bpmn-infra:8081/mso/WorkflowMessage
     notification:
       name: GenericNotificationServiceATT
     sdncadapter:
-      callback: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/SDNCAdapterCallbackService
+      callback: http://bpmn-infra:8081/mso/SDNCAdapterCallbackService
     vnfadapter:
       create:
-        callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
+        callback: http://openstack-adapter:8087/mso/vnfAdapterNotify
       delete:
-        callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
+        callback: http://openstack-adapter:8087/mso/vnfAdapterNotify
       query:
-        callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
+        callback: http://openstack-adapter:8087/mso/vnfAdapterNotify
       rollback:
-        callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
+        callback: http://openstack-adapter:8087/mso/vnfAdapterNotify
+  use:
+    qualified:
+      host: false
   global:
     dmaap:
       username: testuser
@@ -264,8 +273,7 @@ appc:
         timeout: 360000
       write: APPC-LCM-READ
       sdnc:
-        read:
-          name: SDNC-LCM-WRITE
+        read: SDNC-LCM-WRITE
         write: SDNC-LCM-READ
     response:
       timeout: 360000
@@ -314,3 +322,32 @@ spring:
       username: mso_admin
       password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: ACTUATOR
+resource-config:
+ SiteResourceV3:
+   operation-type: SDWANSite
+   activation-required: true
+ siteresourcev3..VfcInstanceGroup..1:
+   operation-type: SDWANSite
+   activation-required: true
+ siteresourcev3..VfcInstanceGroup..2:
+   operation-type: SDWANPort
+   activation-required: true
+ siteresourcev3..VfcInstanceGroup..0:
+   operation-type: SDWANDevice
+   activation-required: true
+ SiteResourceV2:
+   operation-type: SDWANSite
+   activation-required: true
+ siteresourcev2..VfcInstanceGroup..0:
+   operation-type: SDWANSite
+   activation-required: true
+ siteresourcev2..VfcInstanceGroup..1:
+   operation-type: SDWANPort
+   activation-required: true
+ siteresourcev2..VfcInstanceGroup..2:
+   operation-type: SDWANDevice
+   activation-required: true
+ vpnresourceV2:
+   operation-type: SDWANVpn
+   activation-required: true
+
