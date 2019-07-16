@@ -9,7 +9,7 @@ camunda:
   bpm:
     admin-user:
       id: admin
-      password: admin
+      password: so_Admin123
     history-level: full
     job-execution:
       max-pool-size: 30
@@ -44,7 +44,7 @@ mso:
     queue-capacity: 500
   adapters:
     completemsoprocess:
-      endpoint:  http://c1.vm1.mso.simpledemo.onap.org:8081/CompleteMsoProcess
+      endpoint:  http://bpmn-infra:8081/CompleteMsoProcess
     requestDb:
       endpoint: http://request-db-adapter:8083
       auth: Basic YnBlbDpwYXNzd29yZDEk
@@ -88,7 +88,7 @@ mso:
     db:
       endpoint: http://catalog-db-adapter:8082/ecomp/mso/catalog
       spring:
-        endpoint: http://c1.vm1.mso.simpledemo.onap.org:8082
+        endpoint: http://catalog-db-adapter:8082
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
   default:
@@ -121,7 +121,7 @@ mso:
     timeout: PT30M
   oof:
     auth: test:testpwd
-    callbackEndpoint: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
+    callbackEndpoint: http://bpmn-infra:8081/mso/WorkflowMessage
     endpoint: http://oof.api.simpledemo.openecomp.org:8698/api/oof/v1/placement
     timeout: PT30M
   workflow:
@@ -220,11 +220,11 @@ mso:
           namespace: http://org.onap.aai.inventory/
           version: 14
     message:
-      endpoint: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/WorkflowMessage
+      endpoint: http://bpmn-infra:8081/mso/WorkflowMessage
     notification:
       name: GenericNotificationServiceATT
     sdncadapter:
-      callback: http://c1.vm1.mso.simpledemo.onap.org:8081/mso/SDNCAdapterCallbackService
+      callback: http://bpmn-infra:8081/mso/SDNCAdapterCallbackService
     vnfadapter:
       create:
         callback: http://c1.vm1.mso.simpledemo.onap.org:8087/mso/vnfAdapterNotify
@@ -314,3 +314,7 @@ spring:
       username: mso_admin
       password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
       role: ACTUATOR
+org:
+  onap:
+    so:
+      cloud-owner: CloudOwner
