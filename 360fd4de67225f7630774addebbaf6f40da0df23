@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1df2665b_36d5c00f",
+        "filename": "volumes/so/config/vnfm-adapter/onapheat/override.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 249
+      },
+      "writtenOn": "2019-07-23T13:25:59Z",
+      "side": 1,
+      "message": "I was Waqas had lowered this somewhere else to 4 so you might want to check if setting 50 here could be causing performance difficulties in test environments.",
+      "revId": "360fd4de67225f7630774addebbaf6f40da0df23",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
