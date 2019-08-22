@@ -287,15 +287,13 @@ server:
     max-threads: 50
 spring:
   datasource:
-     driver-class-name: org.mariadb.jdbc.Driver
-     url: jdbc:mariadb://mariadb:3306/camundabpmn
-     username: camundauser
-     password: camunda123
-     dbcp2:
-      initial-size: 5
-      max-total: 20
-      validation-query: select 1
-      test-on-borrow: true
+     hikari:
+       driver-class-name: org.mariadb.jdbc.Driver
+       jdbcUrl: jdbc:mariadb://mariadb:3306/camundabpmn
+       username: camundauser
+       password: camunda123
+       pool-name: bpmn-pool
+       registerMbeans: true
   security:
     usercredentials:
     -
