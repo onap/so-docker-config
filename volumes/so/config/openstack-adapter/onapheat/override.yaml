@@ -3,15 +3,13 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mariadb://mariadb:3306/catalogdb
-    username: cataloguser
-    password: catalog123
-    driver-class-name: org.mariadb.jdbc.Driver
-    dbcp2:
-      initial-size: 5
-      max-total: 20
-      validation-query: select 1
-      test-on-borrow: true
+    hikari:
+      jdbcUrl: jdbc:mariadb://mariadb:3306/catalogdb
+      username: cataloguser
+      password: catalog123
+      driver-class-name: org.mariadb.jdbc.Driver
+      pool-name: catdb-pool
+      registerMbeans: false
 
   security:
     usercredentials:

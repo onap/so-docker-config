@@ -15,7 +15,7 @@ mso:
   catalog:
     db:
       spring:
-        endpoint: "http://catalog-db-adapter:8082"
+        endpoint: http://catalog-db-adapter:8082
   db:
     auth: Basic YnBlbDpwYXNzd29yZDEk
   config:
@@ -31,7 +31,7 @@ mso:
           default:
             testApi: GR_API
   camundaURL: http://bpmn-infra:8081
-  camundaAuth: 18FAA5A7D9AF6D99D23191C0408BFC140CE7B3B2BE5D3E3C7078C2383F27752356E5ADFFA388EFBC3B5C3D0F8A8926
+  camundaAuth: AE2E9BE6EF9249085AF98689C4EE087736A5500629A72F35068FFB88813A023581DD6E765071F1C04075B36EA4213A
   async:
     core-pool-size: 50
     max-pool-size: 50
@@ -64,15 +64,13 @@ mso:
 
 spring:
   datasource:
-    url: jdbc:mariadb://mariadb:3306/catalogdb
-    username: cataloguser
-    password: catalog123
-    driver-class-name: org.mariadb.jdbc.Driver
-    dbcp2:
-      initial-size: 5
-      max-total: 20
-      validation-query: select 1
-      test-on-borrow: true
+    hikari:
+      jdbcUrl: jdbc:mariadb://mariadb:3306/catalogdb
+      username: cataloguser
+      password: catalog123
+      driver-class-name: org.mariadb.jdbc.Driver
+      pool-name: catdb-pool
+      registerMbeans: true
   jpa:
       show-sql: true
       hibernate:
@@ -112,13 +110,17 @@ spring:
 
 request:
   datasource:
-    url: jdbc:mariadb://mariadb:3306/requestdb
-    username: requestuser
-    password: request123
-    driver-class-name: org.mariadb.jdbc.Driver
-    dbcp2:
-      initial-size: 5
-      max-total: 20
-      validation-query: select 1
-      test-on-borrow: true
-
+    hikari:
+      jdbcUrl: jdbc:mariadb://mariadb:3306/requestdb
+      username: requestuser
+      password: request123
+      driver-class-name: org.mariadb.jdbc.Driver
+      pool-name: reqdb-pool
+      registerMbeans: true
+org:
+  onap:
+    so:
+      cloud-owner: CloudOwner
+      adapters:
+        network:
+          encryptionKey: 07a7159d3bf51a0e53be7a8f89699be7
