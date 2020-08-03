@@ -1,7 +1,7 @@
 server:
-    port: 8082
-    tomcat:
-        max-threads: 50
+  port: 8082
+  tomcat:
+    max-threads: 50
 ssl-enable: false
 mso:
   logPath: logs
@@ -31,21 +31,27 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   security:
     usercredentials:
-    -
-      username: bpel
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: BPEL-Client
-    -
-      username: mso_admin
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: ACTUATOR
+      - username: bpel
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: BPEL-Client
+      - username: mso_admin
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: ACTUATOR
 
 #Actuator
 management:
   context-path: /manage
 
+  #flyway:
+  #  baseline-on-migrate: false
+  #  url: jdbc:mariadb://mariadb:3306/catalogdb
+  #  user: cataloguser
+  #  password: catalog123
+
 flyway:
-  baseline-on-migrate: true
+  baseline-on-migrate: false
   url: jdbc:mariadb://mariadb:3306/catalogdb
-  user: cataloguser
-  password: catalog123
+  user: so_admin
+  password: so_Admin123
+  outOfOrder: true
+  validateOnMigrate: false

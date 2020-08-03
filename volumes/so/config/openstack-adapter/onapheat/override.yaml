@@ -13,30 +13,24 @@ spring:
 
   security:
     usercredentials:
-    -
-      username: sdnc
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: SDNC-Client
-    -
-      username: sitecontrol
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: SiteControl-Client
-    -
-      username: bpel
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: BPEL-Client
-    -
-      username: sniro
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: SNIRO-Client
-    -
-      username: apih
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: MSO-Client
-    -
-      username: mso_admin
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: ACTUATOR
+      - username: sdnc
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: SDNC-Client
+      - username: sitecontrol
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: SiteControl-Client
+      - username: bpel
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: BPEL-Client
+      - username: sniro
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: SNIRO-Client
+      - username: apih
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: MSO-Client
+      - username: mso_admin
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: ACTUATOR
 
 
 org:
@@ -100,6 +94,14 @@ mso:
     core-pool-size: 50
     max-pool-size: 50
     queue-capacity: 500
+  config:
+    cadi:
+      aafId: so@so.onap.org
+      aafPassword: enc:EME-arXn2lx8PO0f2kEtyK7VVGtAGWavXorFoxRmPO9
+      apiEnforcement: org.onap.so.openStackAdapterPerm
+      noAuthn: /manage/health
+  workflow:
+    endpoint: http://bpmn-infra:8081/sobpmnengine
 
 cloud_config:
   identity_services:

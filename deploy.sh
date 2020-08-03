@@ -75,7 +75,8 @@ function init_docker_command() {
 
 function container_name() {
     SERVICE=$1
-    BASE=$(echo $(basename `pwd`) | sed "s/[^a-z0-9]//i" | tr [:upper:] [:lower:])
+
+    BASE=$(echo $(basename `pwd`) | sed "s/[^a-z0-9]*//i" | tr [:upper:] [:lower:])
     echo ${BASE}_${SERVICE}_1
 }
 

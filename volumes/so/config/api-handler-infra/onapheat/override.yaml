@@ -1,7 +1,7 @@
 server:
-    port: 8080
-    tomcat:
-        max-threads: 50
+  port: 8080
+  tomcat:
+    max-threads: 50
 ssl-enable: false
 
 mso:
@@ -32,6 +32,12 @@ mso:
             testApi: GR_API
   camundaURL: http://bpmn-infra:8081
   camundaAuth: AE2E9BE6EF9249085AF98689C4EE087736A5500629A72F35068FFB88813A023581DD6E765071F1C04075B36EA4213A
+  health:
+    endpoints:
+      - subsystem: apih
+        uri: http://bpmn-infra:8081
+      - subsystem: catalogdb
+        uri: http://catalog-db-adapter:8082
   async:
     core-pool-size: 50
     max-pool-size: 50
@@ -72,41 +78,35 @@ spring:
       pool-name: catdb-pool
       registerMbeans: true
   jpa:
-      show-sql: true
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-        ddl-auto: validate
-        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-        enable-lazy-load-no-trans: true
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      ddl-auto: validate
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      enable-lazy-load-no-trans: true
   jersey:
     type: filter
 
   security:
     usercredentials:
-    -
-      username: sitecontrol
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: SiteControl-Client
-    -
-      username: gui
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: GUI-Client
-    -
-      username: infraportal
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: InfraPortal-Client
-    -
-      username: InfraPortalClient
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: InfraPortal-Client
-    -
-      username: bpel
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: BPEL-Client
-    -
-      username: mso_admin
-      password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
-      role: ACTUATOR
+      - username: sitecontrol
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: SiteControl-Client
+      - username: gui
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: GUI-Client
+      - username: infraportal
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: InfraPortal-Client
+      - username: InfraPortalClient
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: InfraPortal-Client
+      - username: bpel
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: BPEL-Client
+      - username: mso_admin
+        password: '$2a$10$Fh9ffgPw2vnmsghsRD3ZauBL1aKXebigbq3BB1RPWtE62UDILsjke'
+        role: ACTUATOR
 
 request:
   datasource:

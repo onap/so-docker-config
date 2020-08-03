@@ -5,7 +5,7 @@ networks:
     driver_opts:
       com.docker.network.driver.mtu: ${MTU}
 services:
-################################################################################
+  ################################################################################
   mariadb:
     image: mariadb:10.1.11
     ports:
@@ -22,7 +22,7 @@ services:
       options:
         max-size: "30m"
         max-file: "5"
-################################################################################
+  ################################################################################
   catalog-db-adapter:
     image: onap/so/catalog-db-adapter
     ports:
@@ -39,10 +39,10 @@ services:
       - DB_PORT=3306
       - DB_ADMIN_USERNAME=root
       - DB_ADMIN_PASSWORD=password
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       catalog-db-adapter.so.testlab.onap.org
     depends_on:
@@ -52,6 +52,7 @@ services:
       options:
         max-size: "30m"
         max-file: "5"
+    #    command: ["./app/wait-for.sh", "mariadb:3306", "-q","-t","300","--", "/app/start-app.sh"]
     command:
       - /app/wait-for.sh
       - -q
@@ -60,7 +61,7 @@ services:
       - mariadb:3306
       - --
       - "/app/start-app.sh"
-################################################################################
+  ################################################################################
   request-db-adapter:
     image: onap/so/request-db-adapter
     ports:
@@ -77,10 +78,10 @@ services:
       - DB_PORT=3306
       - DB_ADMIN_USERNAME=root
       - DB_ADMIN_PASSWORD=password
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       request-db-adapter.so.testlab.onap.org
     depends_on:
@@ -99,7 +100,7 @@ services:
       - catalog-db-adapter:8082
       - --
       - "/app/start-app.sh"
-################################################################################
+  ###############################################################################
   sdnc-adapter:
     image: onap/so/sdnc-adapter
     ports:
@@ -111,10 +112,10 @@ services:
       - APP=sdnc-adapter
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       sdnc-adapter.so.testlab.onap.org
     depends_on:
@@ -134,7 +135,7 @@ services:
       - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
-################################################################################
+  ################################################################################
   openstack-adapter:
     image: onap/so/openstack-adapter
     ports:
@@ -146,10 +147,10 @@ services:
       - APP=openstack-adapter
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       openstack-adapter.so.testlab.onap.org
     depends_on:
@@ -169,7 +170,7 @@ services:
       - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
-################################################################################
+  ################################################################################
   vfc-adapter:
     image: onap/so/vfc-adapter
     ports:
@@ -181,10 +182,10 @@ services:
       - APP=vfc-adapter
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       vfc-adapter.so.testlab.onap.org
     depends_on:
@@ -204,7 +205,7 @@ services:
       - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
-################################################################################
+  ################################################################################
   sdc-controller:
     image: onap/so/sdc-controller
     ports:
@@ -216,10 +217,10 @@ services:
       - APP=sdc-controller
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       sdc-controller.so.testlab.onap.org
     depends_on:
@@ -239,7 +240,7 @@ services:
       - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
-################################################################################
+  ################################################################################
   bpmn-infra:
     image: onap/so/bpmn-infra
     ports:
@@ -251,10 +252,10 @@ services:
       - APP=bpmn-infra
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       bpmn-infra.so.testlab.onap.org
     depends_on:
@@ -274,7 +275,7 @@ services:
       - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
-################################################################################
+  ################################################################################
   api-handler-infra:
     image: onap/so/api-handler-infra
     ports:
@@ -286,10 +287,10 @@ services:
       - APP=api-handler-infra
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       api-handler-infra.so.testlab.onap.org
     depends_on:
@@ -309,7 +310,7 @@ services:
       - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
-################################################################################
+  ################################################################################
   so-monitoring:
     image: onap/so/so-monitoring
     ports:
@@ -321,12 +322,140 @@ services:
       - APP=so-monitoring
       - JVM_ARGS=-Xms64m -Xmx512m
       - DB_HOST=mariadb
-#     - KEYSTORE=msoClientKeyStore-onapheat.jks
-#     - KEYSTORE_PASSWORD=password
-#     - TRUSTSTORE=msoTrustStore.jks
-#     - TRUSTSTORE_PASSWORD=password
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
     hostname:
       so-monitoring.so.testlab.onap.org
+    depends_on:
+      - mariadb
+      - catalog-db-adapter
+      - request-db-adapter
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "5"
+    command:
+      - /app/wait-for.sh
+      - -q
+      - -t
+      - "300"
+      - request-db-adapter:8083
+      - --
+      - "/app/start-app.sh"
+  ################################################################################
+  cnf-adapter:
+    image: onap/so/cnf-adapter
+    ports:
+      - "9012:9012"
+    volumes:
+      - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
+      - ./volumes/so/config/cnf-adapter/onapheat:/app/config
+    environment:
+      - APP=cnf-adapter
+      - JVM_ARGS=-Xms64m -Xmx512m
+      - DB_HOST=mariadb
+    #     - KEYSTORE=msoClientKeyStore-onapheat.jks
+    #     - KEYSTORE_PASSWORD=password
+    #     - TRUSTSTORE=msoTrustStore.jks
+    #     - TRUSTSTORE_PASSWORD=password
+    hostname:
+      cnf-adapter.so.testlab.onap.org
+    #    depends_on:
+    #     - mariadb
+    #     - catalog-db-adapter
+    #     - request-db-adapter
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "5"
+    command:
+      - /app/wait-for.sh
+      - -q
+      - -t
+      - "300"
+      #      - request-db-adapter:8083
+      - --
+      - "/app/start-app.sh"
+  ################################################################################
+  ve-vnfm-adapter:
+    image: onap/so/ve-vnfm-adapter
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
+      - ./volumes/so/config/ve-vnfm-adapter/onapheat:/app/config
+    environment:
+      - APP=ve-vnfm-adapter
+      - JVM_ARGS=-Xms64m -Xmx512m
+      - DB_HOST=mariadb
+    hostname:
+      ve-vnfm-adapter.so.testlab.onap.org
+    depends_on:
+      - mariadb
+      - catalog-db-adapter
+      - request-db-adapter
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "5"
+    command:
+      - /app/wait-for.sh
+      - -q
+      - -t
+      - "300"
+      - request-db-adapter:8083
+      - --
+      - "/app/start-app.sh"
+  ################################################################################
+  vnfm-adapter:
+    image: onap/so/vnfm-adapter
+    ports:
+      - "9092:9092"
+    volumes:
+      - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
+      - ./volumes/so/config/vnfm-adapter/onapheat:/app/config
+    environment:
+      - APP=vnfm-adapter
+      - JVM_ARGS=-Xms64m -Xmx512m
+      - DB_HOST=mariadb
+    hostname:
+      vnfm-adapter.so.testlab.onap.org
+    depends_on:
+      - mariadb
+      - catalog-db-adapter
+      - request-db-adapter
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "5"
+    command:
+      - /app/wait-for.sh
+      - -q
+      - -t
+      - "300"
+      - request-db-adapter:8083
+      - --
+      - "/app/start-app.sh"
+  ####################################################################################
+  nssmf-adapter:
+    image: onap/so/nssmf-adapter
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
+      - ./volumes/so/config/nssmf-adapter/onapheat:/app/config
+    environment:
+      - APP=nssmf-adapter
+      - JVM_ARGS=-Xms64m -Xmx512m
+      - DB_HOST=mariadb
+    hostname:
+      nssmf-adapter.so.testlab.onap.org
     depends_on:
       - mariadb
       - catalog-db-adapter
