@@ -393,3 +393,34 @@ services:
       #      - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
+####################################################################################
+  nssmf-adapter:
+    image: onap/so/nssmf-adapter
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
+      - ./volumes/so/config/nssmf-adapter/onapheat:/app/config
+    environment:
+      - APP=nssmf-adapter
+      - JVM_ARGS=-Xms64m -Xmx512m
+      - DB_HOST=mariadb
+    hostname:
+      nssmf-adapter.so.testlab.onap.org
+    depends_on:
+      - mariadb
+      - catalog-db-adapter
+      - request-db-adapter
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "5"
+    command:
+      - /app/wait-for.sh
+      - -q
+      - -t
+      - "300"
+      - request-db-adapter:8083
+      - --
+      - "/app/start-app.sh"
