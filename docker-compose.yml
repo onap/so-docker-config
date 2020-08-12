@@ -375,3 +375,35 @@ services:
       - request-db-adapter:8083
       - --
       - "/app/start-app.sh"
+  ################################################################################
+  ve-vnfm-adapter:
+    image: onap/so/ve-vnfm-adapter
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./volumes/so/ca-certificates/onapheat:/app/ca-certificates
+      - ./volumes/so/config/ve-vnfm-adapter/onapheat:/app/config
+    environment:
+      - APP=ve-vnfm-adapter
+      - JVM_ARGS=-Xms64m -Xmx512m
+      - DB_HOST=mariadb
+    hostname:
+      ve-vnfm-adapter.so.testlab.onap.org
+    depends_on:
+      - mariadb
+      - catalog-db-adapter
+      - request-db-adapter
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "5"
+    command:
+      - /app/wait-for.sh
+      - -q
+      - -t
+      - "300"
+      - request-db-adapter:8083
+      - --
+      - "/app/start-app.sh"
+
