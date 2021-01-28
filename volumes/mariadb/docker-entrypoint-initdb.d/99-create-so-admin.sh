@@ -30,6 +30,7 @@ GRANT USAGE ON *.* TO 'so_admin'@'%' IDENTIFIED BY 'so_Admin123';
 GRANT ALL PRIVILEGES ON `camundabpmn`.* TO 'so_admin'@'%' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON `requestdb`.* TO 'so_admin'@'%' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON `catalogdb`.* TO 'so_admin'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON `nfvo`.* TO 'so_admin'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 EOF
 
