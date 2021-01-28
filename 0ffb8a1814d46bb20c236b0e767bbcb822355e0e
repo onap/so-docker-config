@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5045fabb_8478df4c",
+        "filename": "volumes/mariadb/docker-entrypoint-initdb.d/04-create-nfvodb.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3237
+      },
+      "writtenOn": "2021-01-28T13:54:54Z",
+      "side": 1,
+      "message": "put values instead of defining propeties",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "0ffb8a1814d46bb20c236b0e767bbcb822355e0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
