@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1cb5dce_42d97c10",
+        "filename": "volumes/mariadb/docker-entrypoint-initdb.d/04-create-nfvodb.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3237
+      },
+      "writtenOn": "2021-01-28T14:06:50Z",
+      "side": 1,
+      "message": "add below line before CREATE\n\nDROP DATABASE IF EXISTS `nfvo`;",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 87
+      },
+      "revId": "215de2b3acc61aaa91d0ffe38f96cb5f0d4c6441",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
