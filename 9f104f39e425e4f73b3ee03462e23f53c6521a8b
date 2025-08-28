@@ -1,0 +1,10 @@
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Bypass GHA <releng+onap.bypass.gha@linuxfoundation.org>
+Code-Review+2: Byung-Woo Jun <byung-woo.jun@est.tech>
+Verified+1: Thomas Kulik <thomas.kulik@telekom.de>
+Code-Review+2: Thomas Kulik <thomas.kulik@telekom.de>
+Submitted-by: Thomas Kulik <thomas.kulik@telekom.de>
+Submitted-at: Thu, 28 Aug 2025 08:43:28 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/so/docker-config/+/141826
+Project: so/docker-config
+Branch: refs/heads/master
